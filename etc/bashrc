@@ -5,8 +5,9 @@ case $- in
 esac
 
 
-# uname -----------------------------------------------------------
+# uname & hostname ------------------------------------------------
 OS=`uname -s`
+HOSTNAME=`hostname -s`
 
 
 # history ---------------------------------------------------------
@@ -28,15 +29,24 @@ bind "set show-all-if-ambiguous on"
 # bash-completion -------------------------------------------------
 case $OS in
 	Linux)
+		# generic
 		if [ -f /etc/bash_completion ]; then
     			. /etc/bash_completion
+		# ipkg
 		elif [ -f /opt/etc/bash_completion ]; then
 			. /opt/etc/bash_completion
 		fi
 		;;
 	Darwin)
+		# port
 		if [ -f /opt/local/etc/bash_completion ]; then
 			. /opt/local/etc/bash_completion
+		fi
+		;;
+	FreeBSD)
+		# pkg_add
+		if [ -f /usr/local/etc/bash_completion ]; then
+			. /usr/local/etc/bash_completion
 		fi
 		;;
 	*)
@@ -47,7 +57,7 @@ esac
 
 # grep(1) ---------------------------------------------------------
 case $OS in
-	Linux | Darwin)
+	Linux|Darwin|FreeBSD)
 		export GREP_OPTIONS='--color=auto -i'
 		;;
 	*)
@@ -61,7 +71,7 @@ case $OS in
 	Linux)
 		alias ls='ls --color=auto'
 		;;
-	Darwin)
+	Darwin|FreeBSD)
   		export CLICOLOR=1
 		;;
 	*)
@@ -70,12 +80,11 @@ case $OS in
 esac
 
 alias ll='ls -lh'
-alias la='ls -lha'
-
+alias lla='ls -lha'
 
 # less(1)----------------------------------------------------------
 case $OS in
-	Darwin | Linux)
+	Darwin|Linux|FreeBSD)
 		export LESS='-r'
 		;;
 	*)
@@ -89,4 +98,14 @@ export EDITOR='vim'
 
 
 # PAGER ------------------------------------------------------------
-export PAGER='most'
+case $HOSTNAME in
+	loupdessteppes)
+		export PAGER='less'
+		;;
+	mba-francois | imac-francois | freebsd)
+		export PAGER='most'
+		;;
+	*)
+		echo "PAGER: unknown hostname"
+		;;
+esac

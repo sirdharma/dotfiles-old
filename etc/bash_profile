@@ -5,6 +5,7 @@ OS=`uname -s`
 # PATH ------------------------------------------------------------
 case $OS in
 	Darwin)
+		# port
 		export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 		;;
 esac
