@@ -1,0 +1,14 @@
+Host ssh-roc
+User pradel
+HostName ssh-roc.inria.fr
+# inria
+Host *.inria.fr
+ProxyCommand ssh -q ssh-roc /usr/bin/nc -w 1 %h 22
+# epitech
+Host *.epitech.eu
+User pradel_f
+# Defaults
+#Host *
+#User francois
+#ForwardAgent yes
+#ForwardX11 yes

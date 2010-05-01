@@ -1,0 +1,86 @@
+# Interactive shell ----------------------------------------------
+case $- in
+	*i*) ;;
+	*)   return ;;
+esac
+
+
+# uname -----------------------------------------------------------
+OS=`uname -s`
+
+
+# history ---------------------------------------------------------
+shopt -s histappend
+
+
+# PS1 -------------------------------------------------------------
+PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+#PS1='\h:\W$(__git_ps1 "(%s)") \u\$ ' # git-completion
+
+
+# readline --------------------------------------------------------
+bind "set bell-style none"
+bind "set completion-ignore-case on"
+#bind "set editing-mode vi"
+bind "set show-all-if-ambiguous on"
+
+
+# bash-completion -------------------------------------------------
+case $OS in
+	Linux)
+		if [ -f /etc/bash_completion ]; then
+    			. /etc/bash_completion
+		fi
+		;;
+	Darwin)
+		if [ -f /opt/local/etc/bash_completion ]; then
+			. /opt/local/etc/bash_completion
+		fi
+		;;
+	*)
+		echo "bash-completion: unknown operating system"
+		;;
+esac
+
+
+# grep(1) ---------------------------------------------------------
+case $OS in
+	Linux | Darwin)
+		export GREP_OPTIONS='--color=auto'
+		;;
+	*)
+		echo "grep: unknow operating system"
+		;;
+esac
+
+
+# ls(1) -----------------------------------------------------------
+case $OS in
+	Linux)
+		alias ls='ls --color=auto'
+		;;
+	Darwin)
+  		export CLICOLOR=1
+		;;
+	*)
+		echo "ls: unknown operating system"
+		;;
+esac
+
+alias ll='ls -lh'
+alias la='ls -lha'
+
+
+# less(1)----------------------------------------------------------
+case $OS in
+	Darwin)
+		export LESS='-r'
+		;;
+	*)
+		echo "less: unknown operating system"
+		;;
+esac
+
+
+# EDITOR -----------------------------------------------------------
+export EDITOR='vim'

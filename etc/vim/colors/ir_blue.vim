@@ -1,0 +1,1 @@
+../../../twerth/dotfiles/etc/vim/colors/ir_blue.vim
