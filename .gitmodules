@@ -1,3 +1,6 @@
 [submodule "twerth/dotfiles"]
 	path = twerth/dotfiles
 	url = git://github.com/twerth/dotfiles.git
+[submodule "ciaran/terminalcolours"]
+	path = ciaran/terminalcolours
+	url = git://github.com/ciaran/terminalcolours.git
