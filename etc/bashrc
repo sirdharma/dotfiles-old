@@ -30,6 +30,8 @@ case $OS in
 	Linux)
 		if [ -f /etc/bash_completion ]; then
     			. /etc/bash_completion
+		elif [ -f /opt/etc/bash_completion ]; then
+			. /opt/etc/bash_completion
 		fi
 		;;
 	Darwin)
@@ -73,7 +75,7 @@ alias la='ls -lha'
 
 # less(1)----------------------------------------------------------
 case $OS in
-	Darwin)
+	Darwin | Linux)
 		export LESS='-r'
 		;;
 	*)
