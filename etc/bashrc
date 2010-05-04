@@ -70,7 +70,7 @@ case $OS in
 esac
 
 alias ll='ls -lh'
-alias la='ls -lha'
+alias lla='ls -lha'
 
 
 # less(1)----------------------------------------------------------
