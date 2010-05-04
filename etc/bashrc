@@ -103,10 +103,7 @@ case $HOSTNAME in
 	loupdessteppes)
 		export PAGER='less'
 		;;
-	mba-francois | imac-francois | freebsd)
-		export PAGER='most'
-		;;
 	*)
-		echo "PAGER: unknown hostname"
+		export PAGER='most'
 		;;
 esac
