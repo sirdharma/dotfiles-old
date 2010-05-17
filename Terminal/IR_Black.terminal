@@ -38,6 +38,8 @@
 	</data>
 	<key>FontAntialias</key>
 	<true/>
+	<key>Linewrap</key>
+	<true/>
 	<key>ProfileCurrentVersion</key>
 	<real>2.0099999999999998</real>
 	<key>SelectionColor</key>
@@ -225,10 +227,10 @@
 		<string>[5~</string>
 		<key>F72D</key>
 		<string>[6~</string>
-		<key>^F702</key>
-		<string>[5D</string>
-		<key>^F703</key>
-		<string>[5C</string>
+		<key>~F702</key>
+		<string>b</string>
+		<key>~F703</key>
+		<string>f</string>
 		<key>~F704</key>
 		<string>[17~</string>
 		<key>~F705</key>

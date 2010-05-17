@@ -1,10 +1,12 @@
+# ssh-roc.inria.fr
 Host ssh-roc
 User pradel
 HostName ssh-roc.inria.fr
-# inria
+# *.inria.fr
 Host *.inria.fr
-ProxyCommand ssh -q ssh-roc /usr/bin/nc -w 1 %h 22
-# epitech
+#ProxyCommand ssh -q ssh-roc /usr/bin/nc -w 1 %h 22
+ProxyCommand ssh ssh-roc /usr/bin/nc -w 1 %h 22
+# *.epitech.eu
 Host *.epitech.eu
 User pradel_f
 # Defaults
