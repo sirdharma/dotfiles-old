@@ -86,7 +86,7 @@
 	<key>UseBoldFonts</key>
 	<true/>
 	<key>UseBrightBold</key>
-	<false/>
+	<true/>
 	<key>VisualBell</key>
 	<true/>
 	<key>blackColour</key>
