@@ -107,3 +107,13 @@ case $HOSTNAME in
 		export PAGER='most'
 		;;
 esac
+
+# LANG -------------------------------------------------------------
+export LANG=en_US.utf8
+case $OS in
+	Linux)
+		export GDM_LANG=en_US.utf8
+		;;
+	*)
+		;;
+esac
