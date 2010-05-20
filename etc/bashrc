@@ -109,10 +109,10 @@ case $HOSTNAME in
 esac
 
 # LANG -------------------------------------------------------------
-export LANG=en_US.utf8
+export LANG=en_US.UTF-8
 case $OS in
 	Linux)
-		export GDM_LANG=en_US.utf8
+		export GDM_LANG=en_US.UTF-8
 		;;
 	*)
 		;;
