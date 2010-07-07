@@ -4,3 +4,15 @@
 [submodule "timmfin/terminalcolours"]
 	path = timmfin/terminalcolours
 	url = git://github.com/timmfin/terminalcolours.git
+[submodule "textmate/make.tmbundle"]
+	path = textmate/make.tmbundle
+	url = git://github.com/textmate/make.tmbundle.git
+[submodule "textmate/cmake.tmbundle"]
+	path = textmate/cmake.tmbundle
+	url = git://github.com/textmate/cmake.tmbundle.git
+[submodule "textmate/objective-c.tmbundle"]
+	path = textmate/objective-c.tmbundle
+	url = git://github.com/textmate/objective-c.tmbundle.git
+[submodule "textmate/latex.tmbundle"]
+	path = textmate/latex.tmbundle
+	url = git://github.com/textmate/latex.tmbundle.git
