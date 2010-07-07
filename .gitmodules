@@ -4,6 +4,3 @@
 [submodule "timmfin/terminalcolours"]
 	path = timmfin/terminalcolours
 	url = git://github.com/timmfin/terminalcolours.git
-[submodule "texmate"]
-	path = texmate
-	url = git://github.com/textmate/make.tmbundle.git
