@@ -16,3 +16,6 @@
 [submodule "textmate/latex.tmbundle"]
 	path = textmate/latex.tmbundle
 	url = git://github.com/textmate/latex.tmbundle.git
+[submodule "godenzim/readernotifier"]
+	path = godenzim/readernotifier
+	url = git://github.com/godenzim/readernotifier.git
