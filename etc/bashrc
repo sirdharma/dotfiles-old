@@ -1,13 +1,29 @@
+# uname & hostname ------------------------------------------------
+OS=`uname -s`
+HOSTNAME=`hostname -s`
+
+
+# PATH ------------------------------------------------------------
+case $OS in
+	Darwin)
+		# port
+		export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+		;;
+esac
+
+
 # Interactive shell ----------------------------------------------
 case $- in
 	*i*) ;;
 	*)   return ;;
 esac
 
-
-# uname & hostname ------------------------------------------------
-OS=`uname -s`
-HOSTNAME=`hostname -s`
+# STTY -----------------------------------------------------------
+case $TERM_PROGRAM in
+	iTerm.app)
+		stty status '^T'
+		;;
+esac
 
 
 # history ---------------------------------------------------------
@@ -15,14 +31,13 @@ shopt -s histappend
 
 
 # PS1 -------------------------------------------------------------
-PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+PS1='\[\033[32m\]\u@\h\[\033[00m\]:\[\033[34m\]\w\[\033[00m\]\$ '
 #PS1='\h:\W$(__git_ps1 "(%s)") \u\$ ' # git-completion
 
 
 # readline --------------------------------------------------------
 bind "set bell-style none"
 bind "set completion-ignore-case on"
-#bind "set editing-mode vi"
 bind "set show-all-if-ambiguous on"
 
 
@@ -110,8 +125,14 @@ esac
 
 # LANG -------------------------------------------------------------
 #export LANGUAGE= #TODO
-#export LC_ALL= #TODO
 export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export LC_MONETARY=en_US.UTF-8
+export LC_NUMERIC=en_US.UTF-8
+export LC_MESSAGES=en_US.UTF-8
+export LC_COLLATE=en_US.UTF-8
+export LC_CTYPE=en_US.UTF-8
+export LC_TIME=en_US.UTF-8
 case $OS in
 	Linux)
 		export GDM_LANG=en_US.UTF-8
