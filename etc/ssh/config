@@ -5,6 +5,9 @@ HostName ssh-roc.inria.fr
 # scope.inria.fr
 Host scope.inria.fr
 User pradel
+# fylvestre.inria.fr
+Host fylvestre.inria.fr
+User pradel
 # *.inria.fr
 Host *.inria.fr
 ProxyCommand ssh ssh-roc /usr/bin/nc -w 1 %h 22
@@ -16,3 +19,4 @@ User pradel_f
 #User francois
 #ForwardAgent yes
 #ForwardX11 yes
+TCPKeepAlive yes
