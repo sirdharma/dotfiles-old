@@ -1,5 +1,5 @@
 " .vimrc by Francois
-" Thanks to Opera and Bombela
+" Thanks to Opera, Bombela and Hotgloupi
 
 " Syntax highlighting
 if has("syntax")
@@ -25,6 +25,6 @@ let m = matchadd("WhitespaceEOL", "\\s\\+$", 2)
 autocmd BufEnter * match WhitespaceEOL /\s\+$/
 
 " 80 columns limit
-highlight OverflowEOL ctermbg=red guibg=red
-let o = matchadd("OverflowEOL", ".\\%>80v", 1)
-autocmd BufEnter * match OverflowEOL /.\%>81v/
+"highlight OverflowEOL ctermbg=red guibg=red
+"let o = matchadd("OverflowEOL", ".\\%>80v", 1)
+"autocmd BufEnter * match OverflowEOL /.\%>81v/
