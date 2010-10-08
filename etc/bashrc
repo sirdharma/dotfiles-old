@@ -6,6 +6,10 @@ HOSTNAME=`hostname -s`
 # PATH ------------------------------------------------------------
 case $OS in
 	Darwin)
+		# Xcode4
+		if [ -e /Xcode4/usr ]; then
+			export PATH=/Xcode4/usr/bin:/Xcode4/usr/sbin:$PATH
+		fi
 		# port
 		export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 		;;
