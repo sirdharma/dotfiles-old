@@ -1,9 +1,9 @@
-# uname & hostname ------------------------------------------------
+# uname & hostname -------------------------------------------------------------
 OS=`uname -s`
 HOSTNAME=`hostname -s`
 
 
-# PATH ------------------------------------------------------------
+# PATH -------------------------------------------------------------------------
 case $OS in
 	Darwin)
 		# Xcode4
@@ -16,37 +16,85 @@ case $OS in
 esac
 
 
-# Interactive shell ----------------------------------------------
-case $- in
-	*i*) ;;
-	*)   return ;;
-esac
+# EDITOR -----------------------------------------------------------------------
+export EDITOR='vim'
 
 
-# STTY -----------------------------------------------------------
-case $TERM_PROGRAM in
-	iTerm.app)
-		stty status '^T'
+# PAGER ------------------------------------------------------------------------
+export PAGER='less'
+
+
+# LANG -------------------------------------------------------------------------
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+case $OS in
+	Linux)
+		export GDM_LANG=en_US.UTF-8
+		;;
+	*)
 		;;
 esac
 
 
-# history ---------------------------------------------------------
+# grep(1) ----------------------------------------------------------------------
+case $OS in
+	Linux|Darwin|FreeBSD)
+		export GREP_OPTIONS='--color=auto -i'
+		;;
+	*)
+		echo "grep: unknow operating system"
+		;;
+esac
+
+
+# ls(1) ------------------------------------------------------------------------
+case $OS in
+	Linux)
+		alias ls='ls --color=auto'
+		;;
+	Darwin|FreeBSD)
+  		export CLICOLOR=1
+		;;
+	*)
+		echo "ls: unknown operating system"
+		;;
+esac
+
+alias ll='ls -lh'
+alias lla='ls -lha'
+
+
+# less(1) ----------------------------------------------------------------------
+case $OS in
+	Darwin|Linux|FreeBSD)
+		export LESS='-R'
+		;;
+	*)
+		echo "less: unknown operating system"
+		;;
+esac
+
+
+# LESS_TERMCAP -----------------------------------------------------------------
+
+export LESS_TERMCAP_mb=$'\e[01;31m'
+export LESS_TERMCAP_md=$'\e[01;37m'
+export LESS_TERMCAP_me=$'\e[0m'
+export LESS_TERMCAP_se=$'\e[0m'
+export LESS_TERMCAP_so=$'\e[01;44;33m'
+export LESS_TERMCAP_ue=$'\e[0m'
+export LESS_TERMCAP_us=$'\e[01;32m'
+
+
+# prompt -----------------------------------------------------------------------
+PS1='\[\033[32m\]\u@\h\[\033[00m\]:\[\033[34m\]\w\[\033[00m\]\$ '
+
+
+# history ----------------------------------------------------------------------
 shopt -s histappend
 
 
-# PS1 -------------------------------------------------------------
-PS1='\[\033[32m\]\u@\h\[\033[00m\]:\[\033[34m\]\w\[\033[00m\]\$ '
-#PS1='\h:\W$(__git_ps1 "(%s)") \u\$ ' # git-completion
-
-
-# readline --------------------------------------------------------
-bind "set bell-style none"
-bind "set completion-ignore-case on"
-bind "set show-all-if-ambiguous on"
-
-
-# bash-completion -------------------------------------------------
+# completion -------------------------------------------------------------------
 case $OS in
 	Linux)
 		# apt
@@ -75,73 +123,7 @@ case $OS in
 esac
 
 
-# grep(1) ---------------------------------------------------------
-case $OS in
-	Linux|Darwin|FreeBSD)
-		export GREP_OPTIONS='--color=auto -i'
-		;;
-	*)
-		echo "grep: unknow operating system"
-		;;
-esac
-
-
-# ls(1) -----------------------------------------------------------
-case $OS in
-	Linux)
-		alias ls='ls --color=auto'
-		;;
-	Darwin|FreeBSD)
-  		export CLICOLOR=1
-		;;
-	*)
-		echo "ls: unknown operating system"
-		;;
-esac
-
-alias ll='ls -lh'
-alias lla='ls -lha'
-
-
-# less(1)----------------------------------------------------------
-case $OS in
-	Darwin|Linux|FreeBSD)
-		export LESS='-R'
-		;;
-	*)
-		echo "less: unknown operating system"
-		;;
-esac
-
-
-# EDITOR -----------------------------------------------------------
-export EDITOR='vim'
-
-
-# PAGER ------------------------------------------------------------
-case $HOSTNAME in
-	loupdessteppes)
-		export PAGER='less'
-		;;
-	*)
-		export PAGER='most'
-		;;
-esac
-
-# LANG -------------------------------------------------------------
-#export LANGUAGE= #TODO
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
-#export LC_COLLATE=en_US.UTF-8
-#export LC_CTYPE=en_US.UTF-8
-#export LC_MESSAGES=en_US.UTF-8
-#export LC_MONETARY=fr_FR.UTF-8
-#export LC_NUMERIC=fr_FR.UTF-8
-#export LC_TIME=fr_FR.UTF-8
-case $OS in
-	Linux)
-		export GDM_LANG=en_US.UTF-8
-		;;
-	*)
-		;;
-esac
+# readline ---------------------------------------------------------------------
+bind "set bell-style none"
+bind "set completion-ignore-case on"
+bind "set show-all-if-ambiguous on"
