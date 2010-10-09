@@ -1,0 +1,121 @@
+# uname & hostname -------------------------------------------------------------
+OS=`uname -s`
+HOSTNAME=`hostname -s`
+
+
+# PATH -------------------------------------------------------------------------
+case $OS in
+	Darwin)
+		# Xcode4
+		if [ -e /Xcode4/usr ]; then
+			export PATH=/Xcode4/usr/bin:/Xcode4/usr/sbin:$PATH
+		fi
+		# port
+		export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+		;;
+esac
+
+
+# EDITOR -----------------------------------------------------------------------
+export EDITOR='vim'
+
+
+# PAGER ------------------------------------------------------------------------
+export PAGER='less'
+
+
+# LANG -------------------------------------------------------------------------
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+case $OS in
+	Linux)
+		export GDM_LANG=en_US.UTF-8
+		;;
+	*)
+		;;
+esac
+
+
+# grep(1) ----------------------------------------------------------------------
+case $OS in
+	Linux|Darwin|FreeBSD)
+		export GREP_OPTIONS='--color=auto -i'
+		;;
+	*)
+		echo "grep: unknow operating system"
+		;;
+esac
+
+
+# ls(1) ------------------------------------------------------------------------
+case $OS in
+	Linux)
+		alias ls='ls --color=auto'
+		;;
+	Darwin|FreeBSD)
+  		export CLICOLOR=1
+		;;
+	*)
+		echo "ls: unknown operating system"
+		;;
+esac
+
+alias ll='ls -lh'
+alias lla='ls -lha'
+
+
+# less(1) ----------------------------------------------------------------------
+case $OS in
+	Darwin|Linux|FreeBSD)
+		export LESS='-R'
+		;;
+	*)
+		echo "less: unknown operating system"
+		;;
+esac
+
+
+# LESS_TERMCAP -----------------------------------------------------------------
+# http://linux.die.net/man/5/termcap
+autoload colors; colors
+#export LESS_TERMCAP_mb="$fg_bold[cyan]"					# Start blinking
+export LESS_TERMCAP_md="$fg_bold[red]"						# Start bold mode
+export LESS_TERMCAP_so="$bg_bold[yellow]$fg_bold[black]"	# Start standout mode
+export LESS_TERMCAP_us="$fg_bold[green]"					# Start underlining
+export LESS_TERMCAP_se="$reset_color"						# End standout mode
+export LESS_TERMCAP_ue="$reset_color"						# End underlining
+export LESS_TERMCAP_me="$reset_color"						# End all mode like so, us, mb, md and mr
+
+
+# prompt -----------------------------------------------------------------------
+autoload colors; colors
+PROMPT="%{$fg_no_bold[green]%}%n@%m%{$reset_color%}:%{$fg_no_bold[blue]%}%~%{$reset_color%}$ "
+
+
+# history ----------------------------------------------------------------------
+setopt appendhistory		# append history
+setopt histignorealldups	# ignore all dups
+#setopt transient_rprompt
+
+
+# completion -------------------------------------------------------------------
+autoload -Uz compinit; compinit
+zstyle ':completion:*' menu select
+zstyle ':completion:*' list-colors "${(s.:.)LSCOLORS}"
+
+
+# bindings ---------------------------------------------------------------------
+bindkey -e
+bindkey "\eb" backward-word			# option cursor left
+bindkey "\ef" forward-word			# option cursor right
+bindkey "\e[H" beginning-of-line	# home
+bindkey "\e[F" end-of-line			# end
+bindkey "\e[3~" delete-char			# forward delete
+
+
+# history-search ---------------------------------------------------------------
+autoload -U history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "\e[A" history-beginning-search-backward-end	# cursor up
+bindkey "\e[B" history-beginning-search-forward-end		# cursor down
