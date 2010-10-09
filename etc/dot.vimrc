@@ -6,6 +6,9 @@ if has("syntax")
   syntax on         " Syntax highlighting enables Vim to show parts of the text in another font or color.
 endif
 
+set tabstop=4
+set shiftwidth=4
+
 " Global options
 set nocompatible    " This option has the effect of making Vim behave in a more useful way.
 set number          " Print the line number in front of each line.
