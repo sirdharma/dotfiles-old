@@ -24,3 +24,4 @@ Host *
 #   ForwardAgent yes
 #   ForwardX11 yes
     TCPKeepAlive yes
+	ServerAliveInterval 10
