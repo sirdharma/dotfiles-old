@@ -90,12 +90,16 @@ export LESS_TERMCAP_me="$reset_color"						# End all mode like so, us, mb, md an
 # prompt -----------------------------------------------------------------------
 autoload colors; colors
 PROMPT="%{$fg_no_bold[green]%}%n@%m%{$reset_color%}:%{$fg_no_bold[blue]%}%~%{$reset_color%}$ "
+RPROMPT="%(?.%{$fg_bold[blue]%}.%{$fg_bold[red]%})?%{$reset_color%}"
+setopt transient_rprompt
 
 
 # history ----------------------------------------------------------------------
 setopt appendhistory		# append history
 setopt histignorealldups	# ignore all dups
-#setopt transient_rprompt
+HISTFILE=~/.zhistory
+HISTSIZE=10000
+SAVEHIST=10000
 
 
 # completion -------------------------------------------------------------------
@@ -112,6 +116,7 @@ bindkey "\ef" forward-word			# option cursor right
 bindkey "\e[H" beginning-of-line	# home
 bindkey "\e[F" end-of-line			# end
 bindkey "\e[3~" delete-char			# forward delete
+WORDCHARS="${WORDCHARS:s#/#}"		# '/' separates words
 
 
 # history-search ---------------------------------------------------------------
