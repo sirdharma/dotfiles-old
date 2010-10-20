@@ -116,7 +116,7 @@ bindkey "\ef" forward-word			# option cursor right
 bindkey "\e[H" beginning-of-line	# home
 bindkey "\e[F" end-of-line			# end
 bindkey "\e[3~" delete-char			# forward delete
-WORDCHARS="${WORDCHARS:s#/#}"		# '/' separates words
+WORDCHARS="${WORDCHARS:s#/#}"		# '/' mark separate words
 
 
 # history-search ---------------------------------------------------------------
