@@ -18,6 +18,7 @@ set wildmenu        " Command-line completion operates in an enhanced mode.
 set showmode        " If in Insert, Replace or Visual mode put a message on the last line.
 set showcmd         " Show (partial) command in the last line of the screen.
 set mouse=a         " Enable the use of the mouse.
+set backspace=indent,eol,start
 
 " Color scheme (http://blog.infinitered.com/entries/show/8)
 colorscheme ir_black
