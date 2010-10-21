@@ -1,3 +1,6 @@
+# umask
+umask 022
+
 # uname & hostname -------------------------------------------------------------
 OS=`uname -s`
 HOSTNAME=`hostname -s`
