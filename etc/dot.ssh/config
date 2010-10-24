@@ -1,27 +1,29 @@
 # scope.inria.fr
 Host scope.inria.fr
-    User pradel
+	User pradel
 
 # fylvestre.inria.fr
 Host fylvestre.inria.fr
-    User pradel
+	User pradel
 
 # ssh-roc.inria.fr
 Host ssh-roc
-    User pradel
-    HostName ssh-roc.inria.fr
+	User pradel
+	HostName ssh-roc.inria.fr
 
 # *.inria.fr
 Host *.inria.fr
-    ProxyCommand ssh ssh-roc /usr/bin/nc -w 1 %h 22
+	ProxyCommand ssh ssh-roc /usr/bin/nc -w 1 %h 22
 
 # *.epitech.eu
 Host *.epitech.eu
-    User pradel_f
+	User pradel_f
+
+# sirdharma.net
+Host sirdharma.net
+	ForwardAgent yes
 
 # Defaults
 Host *
-#   ForwardAgent yes
-#   ForwardX11 yes
-    TCPKeepAlive yes
+	TCPKeepAlive yes
 	ServerAliveInterval 10
