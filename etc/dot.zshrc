@@ -70,7 +70,7 @@ alias lla='ls -lha'
 # less(1) ----------------------------------------------------------------------
 case $OS in
 	Darwin|Linux|FreeBSD)
-		export LESS='-R'
+		export LESS='-r'
 		;;
 	*)
 		echo "less: unknown operating system"
