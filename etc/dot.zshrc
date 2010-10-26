@@ -68,8 +68,14 @@ case $OS in
 		;;
 esac
 
-alias ll='ls -lh'
-alias lla='ls -lha'
+case $HOSTNAME in
+	yellowstone|scope)
+		alias ll='ls -lhA'
+		;;
+	*)
+		alias ll='ls -lh'
+		;;
+esac
 
 
 # less(1) ----------------------------------------------------------------------
