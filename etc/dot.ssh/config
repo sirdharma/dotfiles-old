@@ -21,7 +21,7 @@ Host *.epitech.eu
 
 # sirdharma.net
 Host sirdharma.net
-	ForwardAgent yes
+#	ForwardAgent yes
 
 # Defaults
 Host *
