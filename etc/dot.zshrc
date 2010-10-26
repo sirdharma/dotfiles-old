@@ -10,11 +10,16 @@ HOSTNAME=`hostname -s`
 case $OS in
 	Darwin)
 		# Xcode4
-		if [ -e /Xcode4/usr ]; then
+		if [[ -x /Xcode4 ]]; then
 			export PATH=/Xcode4/usr/bin:/Xcode4/usr/sbin:$PATH
 		fi
 		# port
-		export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+		if [[ -x /opt/local ]]; then
+			export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+		fi
+		if [[ -x /usr/local/texlive ]]; then
+			export PATH=/usr/local/texlive/2009/bin/universal-darwin-64:$PATH
+		fi
 		;;
 esac
 
