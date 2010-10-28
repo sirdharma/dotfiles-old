@@ -21,6 +21,14 @@ case $OS in
 			export PATH=/usr/local/texlive/2009/bin/universal-darwin-64:$PATH
 		fi
 		;;
+	Linux)
+		# ipkg
+		if [[ -x /opt ]]; then
+			export PATH=/opt/bin:/opt/sbin:$PATH
+		fi
+		;;
+	*)
+		;;
 esac
 
 
