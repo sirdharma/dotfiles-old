@@ -13,7 +13,7 @@ Host ssh-roc
 
 # *.inria.fr
 Host *.inria.fr
-	ProxyCommand ssh ssh-roc /usr/bin/nc -w 1 %h 22
+	ProxyCommand ssh ssh-roc /usr/bin/nc %h 22
 
 # *.epitech.eu
 Host *.epitech.eu
