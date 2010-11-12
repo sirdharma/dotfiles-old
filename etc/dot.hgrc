@@ -1,6 +1,6 @@
 
 [ui]
 username = François Pradel <francois.pradel@gmail.com>
-
+ignore = ~/.hgignore
 [extensions]
 color =
