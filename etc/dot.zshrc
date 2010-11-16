@@ -112,7 +112,7 @@ export LESS_TERMCAP_me="$reset_color"							# End all mode like so, us, mb, md a
 # xterm ------------------------------------------------------------------------
 case $TERM in
 	xterm*)
-		precmd () {print -Pn "\e]0;%n@%m\a"}
+		precmd () {print -Pn "\e]0;%m\a"}
 		;;
 esac
 
