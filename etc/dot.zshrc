@@ -9,6 +9,9 @@ HOSTNAME=`hostname -s`
 # PATH -------------------------------------------------------------------------
 case $OS in
 	Darwin)
+		if [[ -x /usr/libexec/path_helper ]]; then
+			eval `/usr/libexec/path_helper -s`
+		fi
 		# Xcode4
 		if [[ -x /Xcode4 ]]; then
 			export PATH=/Xcode4/usr/bin:/Xcode4/usr/sbin:$PATH
@@ -16,9 +19,6 @@ case $OS in
 		# port
 		if [[ -x /opt/local ]]; then
 			export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-		fi
-		if [[ -x /usr/local/texlive ]]; then
-			export PATH=/usr/local/texlive/2009/bin/universal-darwin-64:$PATH
 		fi
 		;;
 	Linux)
@@ -107,6 +107,14 @@ export LESS_TERMCAP_us="$fg_bold[green]"					# Start underlining
 export LESS_TERMCAP_se="$reset_color"						# End standout mode
 export LESS_TERMCAP_ue="$reset_color"						# End underlining
 export LESS_TERMCAP_me="$reset_color"						# End all mode like so, us, mb, md and mr
+
+
+# xterm ------------------------------------------------------------------------
+case $TERM in
+	xterm*)
+		precmd () {print -Pn "\e]0;%n@%m\a"}
+		;;
+esac
 
 
 # prompt -----------------------------------------------------------------------
