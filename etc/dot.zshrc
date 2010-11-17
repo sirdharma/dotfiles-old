@@ -120,7 +120,7 @@ esac
 # prompt -----------------------------------------------------------------------
 autoload colors; colors
 PROMPT="%{$fg_no_bold[green]%}%n@%m%{$reset_color%}:%{$fg_no_bold[blue]%}%~%{$reset_color%}$ "
-RPROMPT="%(?.%{$fg_bold[blue]%}.%{$fg_bold[red]%})?%{$reset_color%}"
+#RPROMPT="%(?.%{$fg_bold[blue]%}.%{$fg_bold[red]%})?%{$reset_color%}"
 setopt transient_rprompt
 
 
