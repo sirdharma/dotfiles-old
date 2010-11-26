@@ -21,6 +21,7 @@ set backspace=indent,eol,start	" Fixes backspace
 set nobackup					" No backup files
 set nowritebackup				" Only in case you don't want a backup file while editing
 set noswapfile					" No swap files
+set cursorline					" Highlight current line
 
 
 " Color scheme (http://blog.infinitered.com/entries/show/8)
