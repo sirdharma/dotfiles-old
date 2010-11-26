@@ -7,6 +7,14 @@ HOSTNAME=`hostname -s`
 
 
 # PATH -------------------------------------------------------------------------
+case $HOSTNAME in
+	yellowstone)
+		export PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/syno/bin:/usr/syno/sbin:/usr/local/bin:/usr/local/sbin
+		;;
+	*)
+		;;
+esac
+
 case $OS in
 	Darwin)
 		if [[ -x /usr/libexec/path_helper ]]; then
@@ -119,7 +127,7 @@ esac
 
 # prompt -----------------------------------------------------------------------
 autoload colors; colors
-PROMPT="%{$fg_no_bold[green]%}%n@%m%{$reset_color%}:%{$fg_no_bold[blue]%}%~%{$reset_color%}$ "
+PROMPT="%{$fg_no_bold[green]%}%n@%m%{$reset_color%}:%{$fg_no_bold[blue]%}%~%{$reset_color%}%(!.#.$) "
 #RPROMPT="%(?.%{$fg_bold[blue]%}.%{$fg_bold[red]%})?%{$reset_color%}"
 setopt transient_rprompt
 
