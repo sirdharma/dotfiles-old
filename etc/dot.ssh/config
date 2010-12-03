@@ -1,3 +1,8 @@
+# ssh-roc.inria.fr
+Host ssh-roc
+	HostName ssh-roc.inria.fr
+	User pradel
+
 # scope.inria.fr
 Host scope.inria.fr
 	User pradel_f
@@ -5,16 +10,11 @@ Host scope.inria.fr
 # fylvestre.inria.fr
 Host fylvestre.inria.fr
 	User pradel
+	ProxyCommand ssh -q ssh-roc /usr/bin/nc %h 22
 
-# ssh-roc.inria.fr
-Host ssh-roc
-	HostName ssh-roc.inria.fr
-	User pradel
-#	User scope-bot
-#	IdentityFile ~/.ssh/scope-bot.pub
-
-# *.inria.fr
-Host *.inria.fr
+# marvin.inria.fr
+Host marvin.inria.fr
+    User francois
 	ProxyCommand ssh -q ssh-roc /usr/bin/nc %h 22
 
 # *.epitech.eu
