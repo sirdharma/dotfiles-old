@@ -9,7 +9,7 @@ HOSTNAME=`hostname -s`
 # PATH -------------------------------------------------------------------------
 case $HOSTNAME in
 	yellowstone)
-		export PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/syno/bin:/usr/syno/sbin:/usr/local/bin:/usr/local/sbin
+		export PATH=/usr/local/bin:/usr/local/sbin:/usr/syno/bin:/usr/syno/sbin:/usr/bin:/usr/sbin:/bin:/sbin
 		;;
 	*)
 		;;
@@ -28,7 +28,9 @@ case $OS in
 		if [[ -x /opt/local ]]; then
 			export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 		fi
-		;;
+		# We should put /usr/local first for Homebrew
+		export PATH=/usr/local/bin:/usr/local/sbin:$PATH
+        ;;
 	Linux)
 		# ipkg
 		if [[ -x /opt ]]; then
