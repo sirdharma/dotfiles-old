@@ -22,7 +22,7 @@ case $OS in
 		fi
 		# Xcode4
 		if [[ -x /Xcode4 ]]; then
-			export PATH=/Xcode4/usr/bin:/Xcode4/usr/sbin:$PATH
+#			export PATH=/Xcode4/usr/bin:/Xcode4/usr/sbin:$PATH
 		fi
 		# port
 		if [[ -x /opt/local ]]; then
@@ -129,7 +129,7 @@ esac
 
 # prompt -----------------------------------------------------------------------
 autoload colors; colors
-PROMPT="%{$fg_no_bold[green]%}%n@%m%{$reset_color%}:%{$fg_no_bold[blue]%}%~%{$reset_color%}%(!.#.$) "
+PROMPT="%{$fg_bold[black]%}%n%{$fg_no_bold[black]%}@%{$fg_bold[black]%}%m%{$reset_color%}:%{$fg_no_bold[blue]%}%~%{$reset_color%}%(!.#.$) "
 #RPROMPT="%(?.%{$fg_bold[blue]%}.%{$fg_bold[red]%})?%{$reset_color%}"
 setopt transient_rprompt
 
@@ -138,8 +138,8 @@ setopt transient_rprompt
 setopt appendhistory		# append history
 setopt histignorealldups	# ignore all dups
 HISTFILE=~/.zhistory
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=100000
+SAVEHIST=100000
 
 
 # completion -------------------------------------------------------------------
