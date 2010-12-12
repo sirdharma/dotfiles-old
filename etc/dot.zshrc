@@ -1,167 +1,70 @@
-# umask
-umask 022
-
-# uname & hostname -------------------------------------------------------------
-OS=`uname -s`
-HOSTNAME=`hostname -s`
-
-
-# PATH -------------------------------------------------------------------------
-case $HOSTNAME in
-	yellowstone)
-		export PATH=/usr/local/bin:/usr/local/sbin:/usr/syno/bin:/usr/syno/sbin:/usr/bin:/usr/sbin:/bin:/sbin
-		;;
-	*)
-		;;
-esac
-
-case $OS in
-	Darwin)
-		if [[ -x /usr/libexec/path_helper ]]; then
-			eval `/usr/libexec/path_helper -s`
-		fi
-		# Xcode4
-		if [[ -x /Xcode4 ]]; then
-#			export PATH=/Xcode4/usr/bin:/Xcode4/usr/sbin:$PATH
-		fi
-		# port
-		if [[ -x /opt/local ]]; then
-			export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-		fi
-		# We should put /usr/local first for Homebrew
-		export PATH=/usr/local/bin:/usr/local/sbin:$PATH
-        ;;
-	Linux)
-		# ipkg
-		if [[ -x /opt ]]; then
-			export PATH=/opt/bin:/opt/sbin:$PATH
-		fi
-		;;
-	*)
-		;;
-esac
-
-
-# EDITOR -----------------------------------------------------------------------
-export EDITOR='vim'
-
-
-# PAGER ------------------------------------------------------------------------
-export PAGER='less'
-
-
-# LANG -------------------------------------------------------------------------
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
-case $OS in
-	Linux)
-		export GDM_LANG=en_US.UTF-8
-		;;
-	*)
-		;;
-esac
-
-
-# grep(1) ----------------------------------------------------------------------
-case $OS in
-	Linux|Darwin|FreeBSD)
-		export GREP_OPTIONS='--color=auto -i'
-		;;
-	*)
-		echo "grep: unknow operating system"
-		;;
-esac
-
-
-# ls(1) ------------------------------------------------------------------------
-case $OS in
-	Linux)
-		alias ls='ls --color=auto'
-		;;
-	Darwin|FreeBSD)
-  		export CLICOLOR=1
-		;;
-	*)
-		echo "ls: unknown operating system"
-		;;
-esac
-
-case $HOSTNAME in
-	yellowstone|scope)
-		alias ll='ls -lhA'
-		;;
-	*)
-		alias ll='ls -lh'
-		;;
-esac
-
-
-# less(1) ----------------------------------------------------------------------
-case $OS in
-	Darwin|Linux|FreeBSD)
-		export LESS='-r'
-		;;
-	*)
-		echo "less: unknown operating system"
-		;;
-esac
-
-
-# LESS_TERMCAP -----------------------------------------------------------------
-# http://linux.die.net/man/5/termcap
-autoload colors; colors
-#export LESS_TERMCAP_mb="$fg_bold[cyan]"						# Start blinking
-export LESS_TERMCAP_md="$fg_no_bold[red]"						# Start bold mode
-export LESS_TERMCAP_so="$bg_no_bold[yellow]$fg_no_bold[black]"	# Start standout mode
-export LESS_TERMCAP_us="$fg_no_bold[green]"						# Start underlining
-export LESS_TERMCAP_se="$reset_color"							# End standout mode
-export LESS_TERMCAP_ue="$reset_color"							# End underlining
-export LESS_TERMCAP_me="$reset_color"							# End all mode like so, us, mb, md and mr
-
-
-# xterm ------------------------------------------------------------------------
-case $TERM in
-	xterm*)
-		precmd () {print -Pn "\e]0;%m\a"}
-		;;
-esac
-
+#
+# .zshrc by François Pradel <francois.pradel@gmail.com>
+#
 
 # prompt -----------------------------------------------------------------------
-autoload colors; colors
-PROMPT="%{$fg_bold[black]%}%n%{$fg_no_bold[black]%}@%{$fg_bold[black]%}%m%{$reset_color%}:%{$fg_no_bold[blue]%}%~%{$reset_color%}%(!.#.$) "
-#RPROMPT="%(?.%{$fg_bold[blue]%}.%{$fg_bold[red]%})?%{$reset_color%}"
-setopt transient_rprompt
+autoload colors;
+colors
+PROMPT="%{$fg_no_bold[green]%}%n%{$reset_color%}@%{$fg_no_bold[green]%}%m%{$reset_color%}:%{$fg_no_bold[blue]%}%~%{$reset_color%}%(!.#.$) "
 
 
 # history ----------------------------------------------------------------------
-setopt appendhistory		# append history
-setopt histignorealldups	# ignore all dups
+setopt appendhistory        # append history
+setopt histignorealldups    # ignore all dups
 HISTFILE=~/.zhistory
 HISTSIZE=100000
 SAVEHIST=100000
 
 
 # completion -------------------------------------------------------------------
-autoload -Uz compinit; compinit
+autoload -Uz compinit;
+compinit
+
+zstyle ':completion:*' completer _complete _match _approximate
 zstyle ':completion:*' menu select
-zstyle ':completion:*' list-colors "${(s.:.)LSCOLORS}"
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' # case-insensitive
 
 
 # bindings ---------------------------------------------------------------------
-bindkey -e
-bindkey "\eb" backward-word			# option cursor left
-bindkey "\ef" forward-word			# option cursor right
-bindkey "\e[H" beginning-of-line	# home
-bindkey "\e[F" end-of-line			# end
-bindkey "\e[3~" delete-char			# forward delete
-WORDCHARS="${WORDCHARS:s#/#}"		# '/' mark separate words
+bindkey -e  # emacs-style key bindings
+
+bindkey "\e[3~"     delete-char         # forward delete
+bindkey "\e[1;5D"   backward-word       # control cursor left
+bindkey "\e[1;5C"   forward-word        # control cursor right
+bindkey "\e[H"      beginning-of-line   # home
+bindkey "\e[F"      end-of-line         # end
+
+WORDCHARS="${WORDCHARS:s#/#}"           # '/' marks separate words
 
 
 # history-search ---------------------------------------------------------------
-autoload -U history-search-end
+autoload -Uz history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
-bindkey "\e[A" history-beginning-search-backward-end	# cursor up
-bindkey "\e[B" history-beginning-search-forward-end		# cursor down
+bindkey "\e[A" history-beginning-search-backward-end            # cursor up
+bindkey "\e[B" history-beginning-search-forward-end             # cursor down
+
+
+# xterm title ------------------------------------------------------------------
+case $TERM in
+    xterm*)
+        precmd () {print -Pn "\e]0;%m\a"}
+        ;;
+esac
+
+
+# LESS_TERMCAP -----------------------------------------------------------------
+# http://linux.die.net/man/5/termcap
+autoload colors; colors
+#export LESS_TERMCAP_mb="$fg_bold[cyan]"                        # Start blinking
+export LESS_TERMCAP_md="$fg_no_bold[red]"                       # Start bold mode
+export LESS_TERMCAP_so="$bg_no_bold[yellow]$fg_no_bold[black]"  # Start standout mode
+export LESS_TERMCAP_us="$fg_no_bold[green]"                     # Start underlining
+export LESS_TERMCAP_se="$reset_color"                           # End standout mode
+export LESS_TERMCAP_ue="$reset_color"                           # End underlining
+export LESS_TERMCAP_me="$reset_color"                           # End all mode like so, us, mb, md and mr
+
+
+# source .profile (shell-independent)
+if [[ -f ~/.profile ]] && . ~/.profile
