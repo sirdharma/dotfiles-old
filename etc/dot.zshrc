@@ -8,6 +8,13 @@ colors
 PROMPT="%{$fg_no_bold[green]%}%n%{$reset_color%}@%{$fg_no_bold[green]%}%m%{$reset_color%}:%{$fg_no_bold[blue]%}%~%{$reset_color%}%(!.#.$) "
 
 
+# general options
+setopt extendedglob     # extended globing
+setopt nomatch          #
+setopt notify           # report the status of background jobs immediatly
+unsetopt autocd         # no auto 'cd'
+unsetopt beep           # no beep
+
 # history ----------------------------------------------------------------------
 setopt appendhistory        # append history
 setopt histignorealldups    # ignore all dups
@@ -20,7 +27,7 @@ SAVEHIST=100000
 autoload -Uz compinit;
 compinit
 
-zstyle ':completion:*' completer _complete _match _approximate
+#zstyle ':completion:*' completer _complete _match _approximate
 zstyle ':completion:*' menu select
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' # case-insensitive
