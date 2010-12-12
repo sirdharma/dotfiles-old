@@ -55,7 +55,7 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 case $OS in
     Linux)
-        export GDM_LANG=en_US.UTF-8
+#        export GDM_LANG=en_US.UTF-8
         ;;
     *)
         ;;
