@@ -1,3 +1,8 @@
+# ssh-roc.inria.fr
+Host ssh-roc
+	HostName ssh-roc.inria.fr
+	User pradel
+
 # scope.inria.fr
 Host scope.inria.fr
 	User pradel_f
@@ -5,15 +10,12 @@ Host scope.inria.fr
 # fylvestre.inria.fr
 Host fylvestre.inria.fr
 	User pradel
+	ProxyCommand ssh -q ssh-roc /usr/bin/nc %h 22
 
-# ssh-roc.inria.fr
-Host ssh-roc
-	User pradel
-	HostName ssh-roc.inria.fr
-
-# *.inria.fr
-Host *.inria.fr
-	ProxyCommand ssh ssh-roc /usr/bin/nc %h 22
+# marvin.inria.fr
+Host marvin.inria.fr
+    User francois
+	ProxyCommand ssh -q ssh-roc /usr/bin/nc %h 22
 
 # *.epitech.eu
 Host *.epitech.eu
@@ -21,7 +23,12 @@ Host *.epitech.eu
 
 # sirdharma.net
 Host sirdharma.net
+	User francois
 #	ForwardAgent yes
+
+# zion.local
+Host zion.local
+	User xbmc
 
 # Defaults
 Host *

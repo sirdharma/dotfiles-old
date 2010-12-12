@@ -58,15 +58,15 @@
 	<key>ShouldLimitScrollback</key>
 	<integer>0</integer>
 	<key>ShowActiveProcessInTitle</key>
-	<false/>
+	<true/>
 	<key>ShowCommandKeyInTitle</key>
 	<false/>
 	<key>ShowDimensionsInTitle</key>
-	<true/>
+	<false/>
 	<key>ShowShellCommandInTitle</key>
-	<true/>
+	<false/>
 	<key>ShowTTYNameInTitle</key>
-	<true/>
+	<false/>
 	<key>ShowWindowSettingsNameInTitle</key>
 	<false/>
 	<key>TerminalType</key>
@@ -91,7 +91,7 @@
 	<key>UseBoldFonts</key>
 	<true/>
 	<key>UseBrightBold</key>
-	<false/>
+	<true/>
 	<key>VisualBell</key>
 	<false/>
 	<key>blackColour</key>
@@ -101,8 +101,8 @@
 	</data>
 	<key>blueColour</key>
 	<data>
-	BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2JqZWN0AIWEAWMBhARm
-	ZmZmg5eWFj+DzMtLP4P//n4/AYY=
+	BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2JqZWN0AIWEAWMChARm
+	ZmZmg5WUFD+DyshIP4P8+no/AYY=
 	</data>
 	<key>brightBlackColour</key>
 	<data>
@@ -111,13 +111,13 @@
 	</data>
 	<key>brightBlueColour</key>
 	<data>
-	BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2JqZWN0AIWEAWMBhARm
-	ZmZmg7YuNj+D3d5cP4MAjn8/AYY=
+	BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2JqZWN0AIWEAWMChARm
+	ZmZmg7a1NT+D3txcP4MA/34/AYY=
 	</data>
 	<key>brightCyanColour</key>
 	<data>
 	BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2JqZWN0AIWEAWMBhARm
-	ZmZmg+A7YD+D4FVgP4P/PX8/AYY=
+	ZmZmg/jLLD+D0/spPwEBhg==
 	</data>
 	<key>brightGreenColour</key>
 	<data>
@@ -148,15 +148,15 @@
 	<integer>80</integer>
 	<key>cyanColour</key>
 	<data>
-	BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2JqZWN0AIWEAWMBhARm
-	ZmZmg8fGRj+DxsVFP4P//n4/AYY=
+	BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2JqZWN0AIWEAWMChARm
+	ZmZmg8jGRj+Dx8VFP4MA/34/AYY=
 	</data>
 	<key>deleteSendsBackspace</key>
 	<false/>
 	<key>greenColour</key>
 	<data>
-	BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2JqZWN0AIWEAWMBhARm
-	ZmZmg6moKD8Bg8HAwD4Bhg==
+	BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2JqZWN0AIWEAWMChARm
+	ZmZmg6moKD8Bg8LAwD4Bhg==
 	</data>
 	<key>keyMapBoundKeys</key>
 	<dict>
@@ -271,15 +271,15 @@
 	</dict>
 	<key>magentaColour</key>
 	<data>
-	BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2JqZWN0AIWEAWMBhARm
-	ZmZmAYPn5uY+g/79fT8Bhg==
+	BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2JqZWN0AIWEAWMChARm
+	ZmZmAYPo5uY+g//9fT8Bhg==
 	</data>
 	<key>name</key>
 	<string>IR_Black</string>
 	<key>redColour</key>
 	<data>
-	BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2JqZWN0AIWEAWMBhARm
-	ZmZmAYPZ2Ng+g8HAwD4Bhg==
+	BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2JqZWN0AIWEAWMChARm
+	ZmZmAYPa2Ng+g8LAwD4Bhg==
 	</data>
 	<key>rowCount</key>
 	<integer>24</integer>
@@ -294,7 +294,7 @@
 	</data>
 	<key>yellowColour</key>
 	<data>
-	BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2JqZWN0AIWEAWMBhARm
+	BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2JqZWN0AIWEAWMChARm
 	ZmZmAQGDt7Y2PwGG
 	</data>
 </dict>
