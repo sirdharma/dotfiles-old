@@ -41,6 +41,9 @@ bindkey "\e[1;5D"   backward-word       # control cursor left
 bindkey "\e[1;5C"   forward-word        # control cursor right
 bindkey "\e[H"      beginning-of-line   # home
 bindkey "\e[F"      end-of-line         # end
+bindkey "\eOH"      beginning-of-line   # home
+bindkey "\eOF"      end-of-line         # end
+
 
 WORDCHARS="${WORDCHARS:s#/#}"           # '/' marks separate words
 
