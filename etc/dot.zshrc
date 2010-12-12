@@ -85,7 +85,7 @@ case $OS in
 esac
 
 case $HOSTNAME in
-	yellowstone|scope)
+	yellowstone|scope|zion)
 		alias ll='ls -lhA'
 		;;
 	*)
