@@ -1,5 +1,7 @@
+"
 " .vimrc by François
 " Thanks to Opera, Bombela and Hotgloupi
+"
 
 " Global options
     set nocompatible                " Not Vi-compatible
@@ -73,7 +75,7 @@
 
 " Remove trailing whitespace when saving
 " http://vim.wikia.com/wiki/Remove_unwanted_spaces
-    autocmd FileType c,cpp,vim,tex autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
+    autocmd FileType c,cpp,zsh,vim,tex autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
 
 " Arduino
 " http://www.vim.org/scripts/script.php?script_id=2654
