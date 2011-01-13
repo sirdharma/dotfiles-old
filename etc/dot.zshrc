@@ -76,4 +76,6 @@ export LESS_TERMCAP_me="$reset_color"                           # End all mode l
 
 
 # source .profile (shell-independent)
-if [[ -f ~/.profile ]] && . ~/.profile
+if [[ -f ~/.profile ]]; then
+    . ~/.profile
+fi
