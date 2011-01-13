@@ -1,36 +1,41 @@
 # ssh-roc.inria.fr
 Host ssh-roc
-	HostName ssh-roc.inria.fr
-	User pradel
+    HostName ssh-roc.inria.fr
+    User pradel
 
 # scope.inria.fr
 Host scope.inria.fr
-	User pradel_f
+    User pradel_f
 
 # fylvestre.inria.fr
 Host fylvestre.inria.fr
-	User pradel
-	ProxyCommand ssh -q ssh-roc /usr/bin/nc %h 22
+    User pradel
+    ProxyCommand ssh -q ssh-roc /usr/bin/nc %h 22
 
 # marvin.inria.fr
 Host marvin.inria.fr
     User francois
-	ProxyCommand ssh -q ssh-roc /usr/bin/nc %h 22
+    ProxyCommand ssh -q ssh-roc /usr/bin/nc %h 22
+
+# koalab.epitech.eu
+Host koalab.epitech.eu
+    User koala
 
 # *.epitech.eu
 Host *.epitech.eu
-	User pradel_f
+    User pradel_f
 
 # sirdharma.net
 Host sirdharma.net
-	User francois
-#	ForwardAgent yes
+    User francois
+    Port 1337
+#    ForwardAgent yes
 
 # zion.local
 Host zion.local
-	User xbmc
+    User xbmc
 
 # Defaults
 Host *
-	TCPKeepAlive yes
-	ServerAliveInterval 10
+    TCPKeepAlive yes
+    ServerAliveInterval 10

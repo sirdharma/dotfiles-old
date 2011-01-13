@@ -28,11 +28,12 @@ case $OS in
             export PATH=/opt/local/bin:/opt/local/sbin:$PATH
         fi
         # netsoul
-        if [ -x /usr/netsoul ]; then
-            export PATH=/usr/netsoul/bin:$PATH
+        if [ -x /usr/local/netsoul ]; then
+            export PATH=/usr/local/netsoul:$PATH
         fi
         # We should put /usr/local first for Homebrew
         export PATH=/usr/local/bin:/usr/local/sbin:$PATH
+        export PATH=/usr/local/Cellar/python/2.7.1/bin:$PATH
         ;;
     Linux)
         # ipkg
@@ -78,7 +79,7 @@ case $OS in
         alias ls='ls --color=auto'
         ;;
     Darwin|FreeBSD)
-          export CLICOLOR=1
+          export CLICOLOR=
         ;;
     *)
         echo "ls: unknown operating system"
