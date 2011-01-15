@@ -3,6 +3,10 @@
 " Thanks to Opera, Bombela and Hotgloupi
 "
 
+" Variables
+    let hostname = substitute(system('hostname'), '\n', '', '')
+
+
 " Global options
     set nocompatible                " Not Vi-compatible
     set backspace=indent,eol,start  " Fix backspace
@@ -45,7 +49,11 @@
     set number                      " Print the line number in front of each line.
     set cursorline                  " Highlight current line
     set list                        " Show tabs and trailing whitespace
+if hostname == "yellowstone"
+    set listchars=tab:>-,trail:.    " Symbols for tabs and trailing whitespace
+else
     set listchars=tab:»·,trail:·    " Symbols for tabs and trailing whitespace
+endif
     set nostartofline               " Don't jump to first character when paging
     set scrolloff=10                " Keep 10 lines (top/bottom) for scope
 

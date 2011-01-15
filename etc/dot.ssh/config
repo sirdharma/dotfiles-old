@@ -24,6 +24,7 @@ Host *.epitech.eu
 # sirdharma.net
 Host sirdharma.net
 	User francois
+        Port 1337
 #	ForwardAgent yes
 
 # zion.local
