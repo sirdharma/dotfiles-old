@@ -65,7 +65,7 @@ endif
 "   set nowritebackup   " No backup while overwriting file
 
 " Color scheme
-"   set background=dark     " Dark background.
+    set background=dark     " Dark background.
 "   colorscheme ir_dark     " (http://blog.infinitered.com/entries/show/8)
 "   colorscheme wombat      " http://www.vim.org/scripts/script.php?script_id=1778
     set t_Co=256            " 256 colors in terminal
