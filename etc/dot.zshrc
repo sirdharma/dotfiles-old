@@ -8,12 +8,13 @@ colors
 PROMPT="%{$fg_no_bold[green]%}%n%{$reset_color%}@%{$fg_no_bold[green]%}%m%{$reset_color%}:%{$fg_no_bold[blue]%}%~%{$reset_color%}%(!.#.$) "
 
 
-# general options
+# general options --------------------------------------------------------------
 setopt extendedglob     # extended globing
 setopt nomatch          #
 setopt notify           # report the status of background jobs immediatly
 unsetopt autocd         # no auto 'cd'
 unsetopt beep           # no beep
+
 
 # history ----------------------------------------------------------------------
 setopt appendhistory        # append history
@@ -49,13 +50,14 @@ WORDCHARS="${WORDCHARS:s#/#}"           # '/' marks separate words
 
 # history-search ---------------------------------------------------------------
 autoload -Uz history-search-end
+
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 bindkey "\e[A" history-beginning-search-backward-end            # cursor up
 bindkey "\e[B" history-beginning-search-forward-end             # cursor down
 
 
-# xterm title ------------------------------------------------------------------
+# xterm ------------------------------------------------------------------------
 case $TERM in
     xterm*)
         precmd () {print -Pn "\e]0;%m\a"}
@@ -63,9 +65,16 @@ case $TERM in
 esac
 
 
+# man stty(1) ------------------------------------------------------------------
+stty status '^T'    # STATUS character
+stty lnext  '^V'    # LNEXT character
+stty discard '^O'   # DISCARD charcater
+
+
 # LESS_TERMCAP -----------------------------------------------------------------
 # http://linux.die.net/man/5/termcap
 autoload colors; colors
+
 #export LESS_TERMCAP_mb="$fg_bold[cyan]"                        # Start blinking
 export LESS_TERMCAP_md="$fg_no_bold[red]"                       # Start bold mode
 export LESS_TERMCAP_so="$bg_no_bold[yellow]$fg_no_bold[black]"  # Start standout mode
@@ -75,5 +84,7 @@ export LESS_TERMCAP_ue="$reset_color"                           # End underlinin
 export LESS_TERMCAP_me="$reset_color"                           # End all mode like so, us, mb, md and mr
 
 
-# source .profile (shell-independent)
-if [[ -f ~/.profile ]] && . ~/.profile
+# source .profile (shell-independent) ------------------------------------------
+if [[ -f ~/.profile ]]; then
+    . ~/.profile
+fi
