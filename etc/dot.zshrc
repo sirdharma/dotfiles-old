@@ -10,7 +10,7 @@ HOSTNAME=`hostname -s`
 # prompt -----------------------------------------------------------------------
 autoload colors;
 colors
-PROMPT="%{$fg_no_bold[green]%}%n%{$reset_color%}@%{$fg_no_bold[green]%}%m%{$reset_color%}:%{$fg_no_bold[blue]%}%~%{$reset_color%}%(!.#.$) "
+PROMPT="%{$fg_bold[green]%}%n%{$reset_color%}@%{$fg_bold[green]%}%m%{$reset_color%}:%{$fg_bold[blue]%}%~%{$reset_color%}%(!.#.$) "
 
 
 # general options --------------------------------------------------------------
