@@ -11,19 +11,21 @@
     set nocompatible                " Not Vi-compatible
     set backspace=indent,eol,start  " Fix backspace
     set mouse=a                     " Enable the use of the mouse
+    set ttyfast                     " Indicates a fast terminal connection
 
 " Bells
-    set novisualbell    " No visual bell
-    set noerrorbells    " No error bells
+    set noerrorbells    " No error bells for error messages
+    set visualbell      " Visual bell instead of beeping
 
 " Search
     set ignorecase  " Case-insensitive search
+    set smartcase   " Case-sensitive if search contains upper case characters
     set incsearch   " Do incremental searching
-    set hlsearch    " Highlight search
+    set nohlsearch  " No highlight search
 
 " Tabs
     set expandtab       " Expand tabs into spaces
-    set tabstop=8       " Number of spaces of tab character
+    set tabstop=4       " Number of spaces of tab character
     set softtabstop=4   " Number of spaces of soft tab
     set shiftwidth=4    " Number of spaces to (auto)indent
     set shiftround      " Round spaces when identing
@@ -55,16 +57,19 @@ else
     set listchars=tab:»·,trail:·    " Symbols for tabs and trailing whitespace
 endif
     set nostartofline               " Don't jump to first character when paging
-    set scrolloff=10                " Keep 10 lines (top/bottom) for scope
+    set scrolloff=3                 " Keep 10 lines (top/bottom) for scope
 
-" Temp files
+" Temporary files
     set noswapfile      " No swap files
     set nobackup        " No backup files
 "   set nowritebackup   " No backup while overwriting file
 
 " Color scheme
-    set background=dark     " Dark background.
-    colorscheme ir_dark     " (http://blog.infinitered.com/entries/show/8)
+"   set background=dark     " Dark background.
+"   colorscheme ir_dark     " (http://blog.infinitered.com/entries/show/8)
+"   colorscheme wombat      " http://www.vim.org/scripts/script.php?script_id=1778
+    set t_Co=256            " 256 colors in terminal
+    colorscheme wombat256   " http://www.vim.org/scripts/script.php?script_id=2465
 
 " Filetype
     filetype plugin indent on    " Detection: on, plugin: on, indent: on
@@ -83,7 +88,7 @@ endif
 
 " Remove trailing whitespace when saving
 " http://vim.wikia.com/wiki/Remove_unwanted_spaces
-    autocmd FileType c,cpp,zsh,vim,tex autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
+    autocmd FileType c,cpp,zsh,vim,tex,sh autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
 
 " Arduino
 " http://www.vim.org/scripts/script.php?script_id=2654
