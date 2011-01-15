@@ -2,6 +2,11 @@
 # .zshrc by François Pradel <francois.pradel@gmail.com>
 #
 
+# uname & hostname -------------------------------------------------------------
+OS=`uname -s`
+HOSTNAME=`hostname -s`
+
+
 # prompt -----------------------------------------------------------------------
 autoload colors;
 colors
@@ -65,10 +70,14 @@ case $TERM in
 esac
 
 
-# man stty(1) ------------------------------------------------------------------
-stty status '^T'    # STATUS character
-stty lnext  '^V'    # LNEXT character
-stty discard '^O'   # DISCARD charcater
+# stty(1) ----------------------------------------------------------------------
+case $OS in
+    Darwin)
+        stty status '^T'    # STATUS character
+        stty lnext  '^V'    # LNEXT character
+        stty discard '^O'   # DISCARD charcater
+        ;;
+esac
 
 
 # LESS_TERMCAP -----------------------------------------------------------------
