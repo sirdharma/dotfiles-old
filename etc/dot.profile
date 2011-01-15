@@ -34,6 +34,7 @@ case $OS in
         # We should put /usr/local first for Homebrew
         export PATH=/usr/local/bin:/usr/local/sbin:$PATH
         export PATH=/usr/local/Cellar/python/2.7.1/bin:$PATH
+        export PATH=/usr/local/Cellar/ruby/1.9.2-p136/bin:$PATH
         ;;
     Linux)
         # ipkg
