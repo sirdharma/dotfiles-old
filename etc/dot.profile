@@ -58,13 +58,18 @@ export PAGER='less'
 
 
 # LANG -------------------------------------------------------------------------
-#export LANG=en_US.UTF-8
-#export LC_ALL=en_US.UTF-8
-case $OS in
-    Linux)
-#        export GDM_LANG=en_US.UTF-8
+case $HOSTNAME in
+    yellowstone)
         ;;
     *)
+        export LANGUAGE=en_US:en
+        export LANG=en_US.UTF-8
+        export LC_ALL=en_US.UTF-8
+        case $OS in
+            Linux)
+                export GDM_LANG=en_US.UTF-8
+                ;;
+        esac
         ;;
 esac
 
