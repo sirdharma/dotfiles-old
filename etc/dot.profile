@@ -90,7 +90,10 @@ case $OS in
     Linux)
         alias ls='ls --color=auto'
         ;;
-    Darwin|FreeBSD)
+    Darwin)
+        alias ls='gls --color=auto'
+        ;;
+     FreeBSD)
           export CLICOLOR=
         ;;
     *)
