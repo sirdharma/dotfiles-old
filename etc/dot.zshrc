@@ -75,7 +75,7 @@ case $OS in
     Darwin)
         stty status '^T'    # STATUS character
         stty lnext  '^V'    # LNEXT character
-        stty discard '^O'   # DISCARD charcater
+        stty discard '^O'   # DISCARD character
         ;;
 esac
 
