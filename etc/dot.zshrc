@@ -35,7 +35,14 @@ compinit
 
 #zstyle ':completion:*' completer _complete _match _approximate
 zstyle ':completion:*' menu select
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+case $OS in
+    Linux)
+        eval `dircolors -b`     # for LS_COLORS
+        zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+        ;;
+    Darwin)
+        ;;
+esac
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' # case-insensitive
 
 
