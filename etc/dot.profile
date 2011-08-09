@@ -35,8 +35,8 @@ case $OS in
         fi
         # We should put /usr/local first for Homebrew
         export PATH=/usr/local/bin:/usr/local/sbin:$PATH
-        export PATH=/usr/local/Cellar/python/2.7.1/bin:$PATH
-        export PATH=/usr/local/Cellar/ruby/1.9.2-p136/bin:$PATH
+        export PATH=/usr/local/Cellar/python/2.7.2/bin:$PATH
+        export PATH=/usr/local/Cellar/ruby/1.9.2-p290/bin:$PATH
         ;;
     Linux)
         # ipkg
@@ -77,7 +77,7 @@ esac
 # grep(1) ----------------------------------------------------------------------
 case $OS in
     Linux|Darwin|FreeBSD)
-        export GREP_OPTIONS='--color=auto -i'
+#        export GREP_OPTIONS='--color=auto -i'
         ;;
     *)
         echo "grep: unknow operating system"
@@ -102,7 +102,7 @@ case $OS in
 esac
 
 case $HOSTNAME in
-    yellowstone|scope|zion)
+    yellowstone|scope|zion) # servers
         alias ll='ls -lhA'
         ;;
     *)
