@@ -1,0 +1,11 @@
+
+[color]
+	ui = auto
+[user]
+	name = François Pradel
+	email = francois.pradel@gmail.com
+[core]
+	excludesfile = /Users/francois/.gitignore
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master
