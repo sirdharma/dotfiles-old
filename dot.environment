@@ -1,5 +1,7 @@
+#!/bin/bash
+
 #
-# .profile by François Pradel <francois.pradel@gmail.com>
+# .environment by François Pradel <francois.pradel@gmail.com>
 #
 
 # umask ------------------------------------------------------------------------

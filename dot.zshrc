@@ -101,7 +101,7 @@ export LESS_TERMCAP_ue="$reset_color"                           # End underlinin
 export LESS_TERMCAP_me="$reset_color"                           # End all mode like so, us, mb, md and mr
 
 
-# source .profile (shell-independent) ------------------------------------------
-if [[ -f ~/.profile ]]; then
-    . ~/.profile
+# source .environment (shell-independent) ------------------------------------------
+if [[ -f ~/.environment ]]; then
+    . ~/.environment
 fi
