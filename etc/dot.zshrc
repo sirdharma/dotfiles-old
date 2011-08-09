@@ -38,12 +38,20 @@ zstyle ':completion:*' menu select
 case $OS in
     Linux)
         eval `dircolors -b`     # for LS_COLORS
+<<<<<<< HEAD
         ;;
     Darwin)
         eval `gdircolors -b`    # for LS_COLORS
         ;;
 esac
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+=======
+        zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+        ;;
+    Darwin)
+        ;;
+esac
+>>>>>>> c8e45a15236a2498585a2df5e44768be0fe289a3
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' # case-insensitive
 
 
