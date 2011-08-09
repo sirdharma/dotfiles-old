@@ -10,7 +10,7 @@ umask 022
 
 # uname & hostname -------------------------------------------------------------
 OS=`uname -s`
-HOSTNAME=`hostname -s`
+HOSTNAME=`uname -n | sed 's/\..*$//'`
 
 
 # PATH -------------------------------------------------------------------------
@@ -46,6 +46,9 @@ case $OS in
             export PATH=/opt/bin:/opt/sbin:$PATH
         fi
         ;;
+    Minix)
+        # pkgin
+        ;;
     *)
         ;;
 esac
@@ -60,25 +63,21 @@ export PAGER='less'
 
 
 # LANG -------------------------------------------------------------------------
-case $HOSTNAME in
-    yellowstone)
-        ;;
-    *)
+case $OS in
+    Linux)
         export LANGUAGE=en_US:en
         export LANG=en_US.UTF-8
         export LC_ALL=en_US.UTF-8
-        case $OS in
-            Linux)
-                export GDM_LANG=en_US.UTF-8
-                ;;
-        esac
+#        export GDM_LANG=en_US.UTF-8
+        ;;
+    Minix)
         ;;
 esac
 
 
 # grep(1) ----------------------------------------------------------------------
 case $OS in
-    Linux|Darwin|FreeBSD)
+    Linux|Darwin|FreeBSD|Minix)
 #        export GREP_OPTIONS='--color=auto -i'
         ;;
     *)
@@ -95,8 +94,10 @@ case $OS in
     Darwin)
         alias ls='gls --color=auto'
         ;;
-     FreeBSD)
+    FreeBSD)
           export CLICOLOR=
+        ;;
+    Minix)
         ;;
     *)
         echo "ls: unknown operating system"
@@ -104,7 +105,7 @@ case $OS in
 esac
 
 case $HOSTNAME in
-    yellowstone|scope|zion) # servers
+    yellowstone|scope|zion|minix-*) # servers
         alias ll='ls -lhA'
         ;;
     *)
@@ -115,10 +116,22 @@ esac
 
 # less(1) ----------------------------------------------------------------------
 case $OS in
-    Darwin|Linux|FreeBSD)
+    Darwin|Linux|FreeBSD|Minix)
         export LESS='-r'
         ;;
     *)
         echo "less: unknown operating system"
         ;;
 esac
+
+
+# LESS_TERMCAP -----------------------------------------------------------------
+# http://linux.die.net/man/5/termcap
+
+#export LESS_TERMCAP_mb=$'\e[01;36m'    # Start blinking
+export LESS_TERMCAP_md=$'\e[31m'        # Start bold mode
+export LESS_TERMCAP_so=$'\e[43;30m'     # Start standout mode
+export LESS_TERMCAP_us=$'\e[32m'        # Start underlining
+export LESS_TERMCAP_se=$'\e[0m'         # End standout mode
+export LESS_TERMCAP_ue=$'\e[0m'         # End underlining
+export LESS_TERMCAP_me=$'\e[0m'         # End all mode like so, us, mb, md and mr

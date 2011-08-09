@@ -4,7 +4,7 @@
 
 # uname & hostname -------------------------------------------------------------
 OS=`uname -s`
-HOSTNAME=`hostname -s`
+HOSTNAME=`uname -n | sed 's/\..*$//'`
 
 
 # prompt -----------------------------------------------------------------------
@@ -88,20 +88,7 @@ case $OS in
 esac
 
 
-# LESS_TERMCAP -----------------------------------------------------------------
-# http://linux.die.net/man/5/termcap
-autoload colors; colors
-
-#export LESS_TERMCAP_mb="$fg_bold[cyan]"                        # Start blinking
-export LESS_TERMCAP_md="$fg_no_bold[red]"                       # Start bold mode
-export LESS_TERMCAP_so="$bg_no_bold[yellow]$fg_no_bold[black]"  # Start standout mode
-export LESS_TERMCAP_us="$fg_no_bold[green]"                     # Start underlining
-export LESS_TERMCAP_se="$reset_color"                           # End standout mode
-export LESS_TERMCAP_ue="$reset_color"                           # End underlining
-export LESS_TERMCAP_me="$reset_color"                           # End all mode like so, us, mb, md and mr
-
-
-# source .environment (shell-independent) ------------------------------------------
+# source .environment (shell-independent) --------------------------------------
 if [[ -f ~/.environment ]]; then
     . ~/.environment
 fi
