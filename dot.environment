@@ -4,6 +4,7 @@
 # .environment by François Pradel <francois.pradel@gmail.com>
 #
 
+
 # umask ------------------------------------------------------------------------
 umask 022
 
@@ -78,7 +79,7 @@ esac
 # grep(1) ----------------------------------------------------------------------
 case $OS in
     Linux|Darwin|FreeBSD|Minix)
-#        export GREP_OPTIONS='--color=auto -i'
+        export GREP_OPTIONS='--color=auto'
         ;;
     *)
         echo "grep: unknow operating system"

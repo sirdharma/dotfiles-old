@@ -51,11 +51,13 @@
     set number                      " Print the line number in front of each line.
     set cursorline                  " Highlight current line
     set list                        " Show tabs and trailing whitespace
-if hostname == "yellowstone"
+"if hostname == "yellowstone"
+"    || hostname == "minix-stable"
+"    || hostname == "minix-experimental"
     set listchars=tab:>-,trail:.    " Symbols for tabs and trailing whitespace
-else
-    set listchars=tab:»·,trail:·    " Symbols for tabs and trailing whitespace
-endif
+"else
+"    set listchars=tab:»·,trail:·    " Symbols for tabs and trailing whitespace
+"endif
     set nostartofline               " Don't jump to first character when paging
     set scrolloff=3                 " Keep 10 lines (top/bottom) for scope
 
