@@ -49,6 +49,7 @@ case $OS in
         ;;
     Minix)
         # pkgin
+        export PATH=/usr/local/bin:$PATH
         ;;
     *)
         ;;
@@ -90,7 +91,7 @@ esac
 # ls(1) ------------------------------------------------------------------------
 case $OS in
     Linux)
-        alias ls='ls --color=auto'
+        alias ls='LC_COLLATE=C ls -F --color=auto'
         ;;
     Darwin)
         alias ls='gls --color=auto'
@@ -106,7 +107,7 @@ case $OS in
 esac
 
 case $HOSTNAME in
-    yellowstone|scope|zion|minix-*) # servers
+    yellowstone|scope|zion) # servers
         alias ll='ls -lhA'
         ;;
     *)
