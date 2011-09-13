@@ -1,16 +1,20 @@
 # sirdharma.net
 Host sirdharma.net yellowstone.local
     User francois
-#    Port 1337
-#    ForwardAgent yes
 
 # zion.local
 Host zion.local
     User xbmc
 
+# pompeii
+Host pompeii.ics.mq.edu.au
+    User 42495725
+    IdentityFile ~/.ssh/id_dsa.pub
+
 # minix
-Host minix
-    User francois
+Host minix-stable minix-experimental
+    User bin
+    IdentityFile ~/.ssh/id_dsa.pub
 
 # koalab.epitech.eu
 Host koalab.epitech.eu
