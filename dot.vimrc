@@ -6,7 +6,6 @@
 " Variables
     let hostname = substitute(system('hostname'), '\n', '', '')
 
-
 " Global options
     set nocompatible                " Not Vi-compatible
     set backspace=indent,eol,start  " Fix backspace
@@ -25,7 +24,7 @@
 
 " Tabs
     set expandtab       " Expand tabs into spaces
-    set tabstop=4       " Number of spaces of tab character
+    set tabstop=8       " Number of spaces of tab character
     set softtabstop=4   " Number of spaces of soft tab
     set shiftwidth=4    " Number of spaces to (auto)indent
     set shiftround      " Round spaces when identing
@@ -50,16 +49,15 @@
 " Editor
     set number                      " Print the line number in front of each line.
     set cursorline                  " Highlight current line
+if hostname == "yosemite"
     set list                        " Show tabs and trailing whitespace
-"if hostname == "yellowstone"
-"    || hostname == "minix-stable"
-"    || hostname == "minix-experimental"
+    set listchars=tab:»·,trail:·    " Symbols for tabs and trailing whitespace
+else
+"    set list                        " Show tabs and trailing whitespace
     set listchars=tab:>-,trail:.    " Symbols for tabs and trailing whitespace
-"else
-"    set listchars=tab:»·,trail:·    " Symbols for tabs and trailing whitespace
-"endif
+endif
     set nostartofline               " Don't jump to first character when paging
-    set scrolloff=3                 " Keep 10 lines (top/bottom) for scope
+    set scrolloff=5                 " Keep 5 lines (top/bottom) for scope
 
 " Temporary files
     set noswapfile      " No swap files
@@ -79,6 +77,9 @@
 " Syntax
     syntax on   " Syntax highlighting
 
+" Tags
+    set tags+=tags;$HOME
+
 " Highlight trailing whitespace
 " http://vim.wikia.com/wiki/Highlight_unwanted_spaces
     highlight TrailingWhitespace ctermbg=red guibg=red
@@ -90,8 +91,13 @@
 
 " Remove trailing whitespace when saving
 " http://vim.wikia.com/wiki/Remove_unwanted_spaces
-    autocmd FileType c,cpp,zsh,vim,tex,sh autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
+    autocmd FileType c,cpp,zsh,vim,tex,sh,apache,conf,make autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
 
 " Arduino
 " http://www.vim.org/scripts/script.php?script_id=2654
     autocmd! BufNewFile,BufRead *.pde setlocal ft=arduino
+
+" Project-specific .vimrc
+" http://vim.runpaint.org/basics/configuring-vim/
+    set exrc
+    set secure
