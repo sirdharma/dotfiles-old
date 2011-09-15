@@ -50,12 +50,12 @@
 " Editor
     set number                      " Print the line number in front of each line.
     set cursorline                  " Highlight current line
-    set list                        " Show tabs and trailing whitespace
-if hostname == "yellowstone"
-    set listchars=tab:>-,trail:.    " Symbols for tabs and trailing whitespace
-else
-    set listchars=tab:»·,trail:·    " Symbols for tabs and trailing whitespace
-endif
+"    set list                        " Show tabs and trailing whitespace
+"if hostname == "yellowstone"
+"    set listchars=tab:>-,trail:.    " Symbols for tabs and trailing whitespace
+"else
+"    set listchars=tab:»·,trail:·    " Symbols for tabs and trailing whitespace
+"endif
     set nostartofline               " Don't jump to first character when paging
     set scrolloff=3                 " Keep 10 lines (top/bottom) for scope
 
@@ -88,8 +88,4 @@ endif
 
 " Remove trailing whitespace when saving
 " http://vim.wikia.com/wiki/Remove_unwanted_spaces
-    autocmd FileType c,cpp,zsh,vim,tex,sh autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
-
-" Arduino
-" http://www.vim.org/scripts/script.php?script_id=2654
-    autocmd! BufNewFile,BufRead *.pde setlocal ft=arduino
+    autocmd FileType c,cpp,zsh,vim,tex,sh,apache,yaml autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))

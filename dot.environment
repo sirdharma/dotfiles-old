@@ -16,7 +16,7 @@ HOSTNAME=`uname -n | sed 's/\..*$//'`
 # PATH -------------------------------------------------------------------------
 case $HOSTNAME in
     yellowstone)
-        export PATH=/usr/local/bin:/usr/local/sbin:/usr/syno/bin:/usr/syno/sbin:/usr/bin:/usr/sbin:/bin:/sbin
+        export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
         ;;
     *)
         ;;
@@ -65,9 +65,9 @@ export PAGER='less'
 # LANG -------------------------------------------------------------------------
 case $OS in
     Linux)
-        export LANGUAGE=en_US:en
-        export LANG=en_US.UTF-8
-        export LC_ALL=en_US.UTF-8
+#        export LANGUAGE=en_US:en
+#        export LANG=en_US.UTF-8
+#        export LC_ALL=en_US.UTF-8
 #        export GDM_LANG=en_US.UTF-8
         ;;
     Minix)
