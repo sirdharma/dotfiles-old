@@ -93,10 +93,6 @@ endif
 " http://vim.wikia.com/wiki/Remove_unwanted_spaces
     autocmd FileType apache,c,conf,cpp,make,sh,tex,vim,yaml,zsh autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
 
-" Arduino
-" http://www.vim.org/scripts/script.php?script_id=2654
-    autocmd! BufNewFile,BufRead *.pde setlocal ft=arduino
-
 " Project-specific .vimrc
 " http://vim.runpaint.org/basics/configuring-vim/
     set exrc
