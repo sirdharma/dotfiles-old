@@ -4,6 +4,7 @@
 # .environment by François Pradel <francois.pradel@gmail.com>
 #
 
+
 # umask ------------------------------------------------------------------------
 umask 022
 
@@ -48,6 +49,7 @@ case $OS in
         ;;
     Minix)
         # pkgin
+        export PATH=/usr/local/bin:$PATH
         ;;
     *)
         ;;
@@ -78,7 +80,7 @@ esac
 # grep(1) ----------------------------------------------------------------------
 case $OS in
     Linux|Darwin|FreeBSD|Minix)
-#        export GREP_OPTIONS='--color=auto -i'
+        export GREP_OPTIONS='--color=auto'
         ;;
     *)
         echo "grep: unknow operating system"
@@ -89,7 +91,7 @@ esac
 # ls(1) ------------------------------------------------------------------------
 case $OS in
     Linux)
-        alias ls='ls --color=auto'
+        alias ls='LC_COLLATE=C ls -F --color=auto'
         ;;
     Darwin)
         alias ls='gls --color=auto'
@@ -105,7 +107,7 @@ case $OS in
 esac
 
 case $HOSTNAME in
-    yellowstone|scope|zion|minix-*) # servers
+    yellowstone|scope|zion) # servers
         alias ll='ls -lhA'
         ;;
     *)
