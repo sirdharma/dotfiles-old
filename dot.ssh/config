@@ -47,4 +47,3 @@ Host marvin.inria.fr
 Host *
     TCPKeepAlive yes
     ServerAliveInterval 10
-    ForwardX11 yes
