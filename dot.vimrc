@@ -83,7 +83,7 @@
 " Highlight long lines
 " http://vim.wikia.com/wiki/Highlight_long_lines
 " au BufWinEnter * let w:m1=matchadd('Search', '\%<81v.\%>77v', -1)
-  autocmd BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+  autocmd FileType c,cpp,objc,tex autocmd BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 
 " Highlight unwanted spaces
 " http://vim.wikia.com/wiki/Highlight_unwanted_spaces
@@ -96,7 +96,7 @@
 
 " Remove trailing whitespace when saving
 " http://vim.wikia.com/wiki/Remove_unwanted_spaces
-  autocmd FileType apache,c,conf,cpp,make,python,sh,tex,vim,yaml,zsh autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
+  autocmd FileType apache,c,conf,cpp,make,objc,python,sh,tex,vim,yaml,zsh autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
 
 " Project-specific .vimrc
 " http://vim.runpaint.org/basics/configuring-vim/
