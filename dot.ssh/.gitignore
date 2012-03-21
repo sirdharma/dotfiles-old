@@ -1,2 +1,4 @@
 known_hosts
 authorized_keys
+id_dsa
+id_dsa.pub
