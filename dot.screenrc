@@ -1,5 +1,4 @@
-setenv SSH_AUTH_SOCK $HOME/.screen-ssh-agent
-screen 10 ssh-agent -a $SSH_AUTH_SOCK $SHELL
+setenv SSH_AUTH_SOCK "/tmp/ssh-agent-$USER-screen"
 hardstatus off
 hardstatus string '%H %n'
-termcapinfo xterm*|rxvt*|kterm*|Eterm* 'hs:ts=\E]0;:fs=\007:ds=\E]0;\007'
+termcapinfo xterm* 'hs:ts=\E]0;:fs=\007:ds=\E]0;\007'
