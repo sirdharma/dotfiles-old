@@ -1,50 +1,53 @@
-# sirdharma.net
+# yellowstone
 Host sirdharma.net yellowstone.local
-    User francois
+User francois
 
-# zion.local
+# zion
 Host zion.local
-    User xbmc
+User xbmc
 
-# pompeii
+# *.ken.nicta.com.au
+Host *.ken.nicta.com.au
+User fpradel
+ProxyCommand ssh fpradel@login.nicta.com.au nc \-q 0 %h %p
+
+# verus.science.mq.edu.au
+Host verus.science.mq.edu.au
+User fpradel
+
+# pompeii.ics.mq.edu.au
 Host pompeii.ics.mq.edu.au
-    User 42495725
-    IdentityFile ~/.ssh/id_dsa.pub
-
-# minix
-Host minix-stable minix-experimental
-    User bin
-    IdentityFile ~/.ssh/id_dsa.pub
+User 42495725
 
 # koalab.epitech.eu
 Host koalab.epitech.eu
-    User koala
+User koala
 
 # *.epitech.eu
 Host *.epitech.eu
-    User pradel_f
+User pradel_f
 
 # scope.inria.fr
 Host scope.inria.fr
-    User pradel_f
+User pradel_f
 
 # ssh-roc.inria.fr
 Host ssh-roc
-    HostName ssh-roc.inria.fr
-    User pradel
+HostName ssh-roc.inria.fr
+User pradel
 
 # fylvestre.inria.fr
 Host fylvestre.inria.fr
-    User pradel
-    ProxyCommand ssh -q ssh-roc /usr/bin/nc %h 22
+User pradel
+ProxyCommand ssh -q ssh-roc /usr/bin/nc %h 22
 
 # marvin.inria.fr
 Host marvin.inria.fr
-    User francois
-    ProxyCommand ssh -q ssh-roc /usr/bin/nc %h 22
+User francois
+ProxyCommand ssh -q ssh-roc /usr/bin/nc %h 22
 
 # Defaults
 Host *
-    TCPKeepAlive yes
-    ServerAliveInterval 10
-    ForwardAgent yes
+ServerAliveInterval 60
+TCPKeepAlive yes
+ForwardAgent yes
