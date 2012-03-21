@@ -40,7 +40,7 @@ case $OS in
         eval `dircolors -b`     # for LS_COLORS
         ;;
     Darwin)
-        eval `gdircolors -b`    # for LS_COLORS
+        eval `/usr/local/bin/gdircolors -b`    # for LS_COLORS
         ;;
 esac
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
