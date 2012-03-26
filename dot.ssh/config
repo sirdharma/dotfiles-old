@@ -6,6 +6,11 @@ User francois
 Host zion.local
 User xbmc
 
+Host zion.sirdharma.net
+HostName sirdharma.net
+Port 1022
+User xbmc
+
 # *.ken.nicta.com.au
 Host *.ken.nicta.com.au
 User fpradel
