@@ -42,9 +42,9 @@
   set statusline=%<%F\ %h%m%r[%{&ff}]%y%=%-14.(%l,%c%V%)\ %P  " Status line
 
 " Indenting
-  set autoindent  " Auto indentation
+  "set autoindent  " Auto indentation
   set smartindent " Smart indentation
-  set cindent     " C indentation
+  "set cindent     " C indentation
 
 " Editor
   set number                      " Print the line number in front of each line.
