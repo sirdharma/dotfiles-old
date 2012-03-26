@@ -10,14 +10,19 @@ umask 022
 
 
 # uname & hostname -------------------------------------------------------------
-OS=`uname -s`
-HOSTNAME=`uname -n | sed 's/\..*$//'`
+#OS=`uname -s`
+#HOSTNAME=`uname -n | sed 's/\..*$//'`
 
 
 # PATH -------------------------------------------------------------------------
 case $HOSTNAME in
     yellowstone)
         export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
+        ;;
+    paulaner)
+        if [ -r /opt/ertos/bin/ertos_env.sh ]; then
+            . /opt/ertos/bin/ertos_env.sh
+        fi
         ;;
     *)
         ;;
@@ -28,7 +33,7 @@ case $OS in
         if [ -x /usr/libexec/path_helper ]; then
             eval `/usr/libexec/path_helper -s`
         fi
-        # port
+        # MacPorts
         if [ -x /opt/local ]; then
             export PATH=/opt/local/bin:/opt/local/sbin:$PATH
         fi
@@ -38,8 +43,8 @@ case $OS in
         fi
         # We should put /usr/local first for Homebrew
         export PATH=/usr/local/bin:/usr/local/sbin:$PATH
-        export PATH=/usr/local/Cellar/python/2.7.2/bin:$PATH
-        export PATH=/usr/local/Cellar/ruby/1.9.2-p290/bin:$PATH
+        #export PATH=/usr/local/Cellar/python/2.7.2/bin:$PATH
+        #export PATH=/usr/local/Cellar/ruby/1.9.2-p290/bin:$PATH
         ;;
     Linux)
         # ipkg
@@ -52,8 +57,13 @@ case $OS in
         export PATH=/usr/local/bin:$PATH
         ;;
     *)
-        ;;
+       ;;
 esac
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+      PATH="$HOME/bin:$PATH"
+fi
 
 
 # EDITOR -----------------------------------------------------------------------
@@ -97,7 +107,7 @@ case $OS in
         alias ls='gls --color=auto'
         ;;
     FreeBSD)
-          export CLICOLOR=
+        export CLICOLOR=
         ;;
     Minix)
         ;;
@@ -107,7 +117,7 @@ case $OS in
 esac
 
 case $HOSTNAME in
-    yellowstone|scope|zion) # servers
+    yellowstone|scope|zion|paulaner) # servers
         alias ll='ls -lhA'
         ;;
     *)

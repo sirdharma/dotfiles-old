@@ -2,6 +2,7 @@
 # .zshrc by François Pradel <francois.pradel@gmail.com>
 #
 
+
 # uname & hostname -------------------------------------------------------------
 OS=`uname -s`
 HOSTNAME=`uname -n | sed 's/\..*$//'`
@@ -92,3 +93,8 @@ esac
 if [[ -f ~/.environment ]]; then
     . ~/.environment
 fi
+
+
+# unset ------------------------------------------------------------------------
+OS=""
+HOSTNAME=""
