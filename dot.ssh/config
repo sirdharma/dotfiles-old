@@ -16,6 +16,10 @@ Host *.ken.nicta.com.au
 User fpradel
 ProxyCommand ssh fpradel@login.nicta.com.au nc \-q 0 %h %p
 
+# *.keg.ertos.in.nicta.com.au
+Host *.keg.ertos.in.nicta.com.au
+User fpradel
+
 # verus.science.mq.edu.au
 Host verus.science.mq.edu.au
 User fpradel
