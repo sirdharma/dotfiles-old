@@ -20,13 +20,14 @@ set visualbell    " Visual bell instead of beeping
 set ignorecase  " Case-insensitive search
 set smartcase   " Case-sensitive if search contains upper case characters
 set incsearch   " Do incremental searching
-set nohlsearch  " No highlight search
+"set nohlsearch  " No highlight search
+set hlsearch    " Highlight search
 
 " Tabs
-set expandtab     " Expand tabs into spaces
 "set tabstop=8    " Number of spaces of tab character
-set shiftwidth=2  " Number of spaces to (auto)indent
 set softtabstop=2 " Number of spaces of soft tab
+set shiftwidth=2  " Number of spaces to (auto)indent
+set expandtab     " Expand tabs into spaces
 set shiftround    " Round spaces when identing
 
 " Last lines
@@ -38,23 +39,24 @@ set showmatch " Show the match
 
 " Status line
 set laststatus=2                                            " Always show statusline
-"set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P           " Default statusline
+"set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P            " Default statusline
 set statusline=%<%F\ %h%m%r[%{&ff}]%y%=%-14.(%l,%c%V%)\ %P  " Status line
 
 " Indenting
 set autoindent  " Auto indentation
-"set smartindent" Smart indentation
-"set cindent    " C indentation
+"set smartindent " Smart indentation
+"set cindent     " C indentation
 
 " Editor
 set number                      " Print the line number in front of each line.
+set nowrap                      " Lines will not wrap
 set cursorline                  " Highlight current line
 if hostname == "yosemite"
   set list                      " Show tabs and trailing whitespace
-  set listchars=tab:»·,trail:·  " Symbols for tabs and trailing whitespace
-else
-  "set list                     " Show tabs and trailing whitespace
   set listchars=tab:>-,trail:.  " Symbols for tabs and trailing whitespace
+else
+  set list                      " Show tabs and trailing whitespace
+  set listchars=tab:»·,trail:·  " Symbols for tabs and trailing whitespace
 endif
 set nostartofline               " Don't jump to first character when paging
 set scrolloff=5                 " Keep 5 lines (top/bottom) for scope
@@ -62,14 +64,14 @@ set scrolloff=5                 " Keep 5 lines (top/bottom) for scope
 " Temporary files
 set noswapfile    " No swap files
 set nobackup      " No backup files
-"set nowritebackup" No backup while overwriting file
+"set nowritebackup " No backup while overwriting file
 
 " Color scheme
-set background=dark   " Dark background.
-"colorscheme ir_dark  " (http://blog.infinitered.com/entries/show/8)
-"colorscheme wombat   " http://www.vim.org/scripts/script.php?script_id=1778
-set t_Co=256          " 256 colors in terminal
-colorscheme wombat256 " http://www.vim.org/scripts/script.php?script_id=2465
+set background=dark       " Dark background.
+"colorscheme ir_dark       " (http://blog.infinitered.com/entries/show/8)
+"colorscheme wombat        " http://www.vim.org/scripts/script.php?script_id=1778
+set t_Co=256              " 256 colors in terminal
+colorscheme wombat256mod  " http://www.vim.org/scripts/script.php?script_id=2465
 
 " Filetype
 filetype plugin indent on " Detection: on, plugin: on, indent: on
@@ -82,8 +84,9 @@ set tags+=tags;$HOME
 
 " Highlight long lines
 " http://vim.wikia.com/wiki/Highlight_long_lines
-" au BufWinEnter * let w:m1=matchadd('Search', '\%<81v.\%>77v', -1)
-autocmd FileType c,cpp,objc,tex autocmd BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+"au BufWinEnter * let w:m1=matchadd('Search', '\%<81v.\%>77v', -1)
+autocmd FileType c,cpp,objc,tex autocmd BufWinEnter <buffer> let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+"autocmd FileType c,cpp,objc,tex set columns=80
 
 " Highlight unwanted spaces
 " http://vim.wikia.com/wiki/Highlight_unwanted_spaces
@@ -96,13 +99,15 @@ autocmd BufWinLeave * call clearmatches()
 
 " Remove trailing whitespace when saving
 " http://vim.wikia.com/wiki/Remove_unwanted_spaces
-autocmd FileType apache,c,conf,cpp,make,objc,python,sh,tex,vim,yaml,zsh autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
+"autocmd FileType apache,c,conf,cpp,make,objc,python,sh,tex,vim,yaml,zsh autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
+autocmd FileType apache,c,conf,cpp,make,objc,python,sh,tex,vim,yaml,zsh autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 " Project-specific .vimrc
 " http://vim.runpaint.org/basics/configuring-vim/
 set exrc
 set secure
 
+" Latex suite
 " http://vim-latex.sourceforge.net/documentation/latex-suite/recommended-settings.html
 "
 " REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
