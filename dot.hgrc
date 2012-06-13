@@ -3,9 +3,14 @@
 update = -v
 
 [ui]
-username = François Pradel <francois.pradel@gmail.com>
+username = Francois Pradel <francois.pradel@nicta.com.au>
 ignore = ~/.hgignore
+
+[pager]
+pager = LESS='FSRX' less
 
 [extensions]
 color =
 hgext.graphlog =
+pager =
+mq =
