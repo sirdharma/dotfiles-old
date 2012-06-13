@@ -11,21 +11,25 @@ HostName sirdharma.net
 Port 1022
 User xbmc
 
+# *.nicta.com.au
+Host *.nicta.com.au
+User fpradel
+
 # *.ken.nicta.com.au
 Host *.ken.nicta.com.au
 User fpradel
 ProxyCommand ssh fpradel@login.nicta.com.au nc \-q 0 %h %p
 
-# *.keg.ertos.in.nicta.com.au
 Host *.keg.ertos.in.nicta.com.au
 User fpradel
+ProxyCommand ssh fpradel@login.nicta.com.au nc \-q 0 %h %p
 
 # verus.science.mq.edu.au
 Host verus.science.mq.edu.au
 User fpradel
 
-# pompeii.ics.mq.edu.au
-Host pompeii.ics.mq.edu.au
+# pompeii.science.mq.edu.au
+Host pompeii.science.mq.edu.au
 User 42495725
 
 # koalab.epitech.eu
