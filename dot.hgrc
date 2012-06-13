@@ -6,6 +6,10 @@ update = -v
 username = François Pradel <francois.pradel@gmail.com>
 ignore = ~/.hgignore
 
+[pager]
+pager = LESS='FSRX' less
+
 [extensions]
 color =
 hgext.graphlog =
+pager =

@@ -104,7 +104,7 @@ case $OS in
         alias ls='LC_COLLATE=C ls -F --color=auto'
         ;;
     Darwin)
-        alias ls='gls --color=auto'
+        alias ls='gls -F --color=auto'
         ;;
     FreeBSD)
         export CLICOLOR=
