@@ -10,7 +10,7 @@ let hostname = substitute(system('hostname'), '\n', '', '')
 set nocompatible                " Not Vi-compatible
 set backspace=indent,eol,start  " Fix backspace
 set mouse=a                     " Enable the use of the mouse
-set ttyfast                     " Indicates a fast terminal connection
+"set ttyfast                     " Indicates a fast terminal connection
 
 " Bells
 set noerrorbells  " No error bells for error messages
@@ -50,13 +50,13 @@ set autoindent  " Auto indentation
 " Editor
 set number                      " Print the line number in front of each line.
 set nowrap                      " Lines will not wrap
-set cursorline                  " Highlight current line
-if hostname == "yosemite"
+if hostname == "yellowstone"
   set list                      " Show tabs and trailing whitespace
   set listchars=tab:>-,trail:.  " Symbols for tabs and trailing whitespace
 else
   set list                      " Show tabs and trailing whitespace
   set listchars=tab:»·,trail:·  " Symbols for tabs and trailing whitespace
+  set cursorline                " Highlight current line
 endif
 set nostartofline               " Don't jump to first character when paging
 set scrolloff=5                 " Keep 5 lines (top/bottom) for scope
