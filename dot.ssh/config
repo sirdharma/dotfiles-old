@@ -24,6 +24,10 @@ Host *.keg.ertos.in.nicta.com.au
 User fpradel
 ProxyCommand ssh fpradel@login.nicta.com.au nc \-q 0 %h %p
 
+# titanic.science.mq.edu.au
+Host titanic.science.mq.edu.au
+User mq20120541
+
 # verus.science.mq.edu.au
 Host verus.science.mq.edu.au
 User fpradel
