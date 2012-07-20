@@ -14,3 +14,13 @@ color =
 hgext.graphlog =
 pager =
 mq =
+
+[merge-tools]
+kdiff3.args=--auto --L1 base --L2 local --L3 other $base $local $other -o $output
+kdiff3.fixeol=True
+kdiff3.gui=True
+kdiff3.priority = 100
+
+diff3.args=-m -A $local $base $other > $output
+diff3.fixeol=True
+diff3.priority = 0
