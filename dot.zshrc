@@ -29,8 +29,8 @@ unsetopt beep       # no beep
 setopt appendhistory        # append history
 setopt histignorealldups    # ignore all dups
 HISTFILE=~/.zhistory
-HISTSIZE=100000
-SAVEHIST=100000
+HISTSIZE=65536
+SAVEHIST=65536
 
 
 # completion -------------------------------------------------------------------
