@@ -9,14 +9,17 @@ HOSTNAME=`uname -n | sed 's/\..*$//'`
 
 
 # prompt -----------------------------------------------------------------------
-autoload colors;
-colors
-PROMPT="%{$fg_bold[green]%}%n%{$reset_color%}@%{$fg_bold[green]%}%m%{$reset_color%}:%{$fg_bold[blue]%}%~%{$reset_color%}%(!.#.$) "
+autoload -Uz promptinit
+promptinit
+prompt walters
+#autoload colors;
+#colors
+#PROMPT="%{$fg_bold[green]%}%n%{$reset_color%}@%{$fg_bold[green]%}%m%{$reset_color%}:%{$fg_bold[blue]%}%~%{$reset_color%}%(!.#.$) "
 
 
 # general options --------------------------------------------------------------
 setopt extendedglob     # extended globing
-setopt nomatch          #
+setopt nomatch          # print error message if no match
 setopt notify           # report the status of background jobs immediatly
 unsetopt autocd         # no auto 'cd'
 unsetopt beep           # no beep
@@ -31,18 +34,19 @@ SAVEHIST=100000
 
 
 # completion -------------------------------------------------------------------
-autoload -Uz compinit;
+autoload -Uz compinit
 compinit
 
 #zstyle ':completion:*' completer _complete _match _approximate
 zstyle ':completion:*' menu select
 case $OS in
-    Linux)
-        eval `dircolors -b`     # for LS_COLORS
-        ;;
-    Darwin)
-        eval `/usr/local/bin/gdircolors -b`    # for LS_COLORS
-        ;;
+  Linux)
+    eval `dircolors -b`     # for LS_COLORS
+    ;;
+  Darwin)
+    export LS_COLORS="di=34;40:ln=35;40:so=32;40:pi=33;40:ex=31;40:bd=34;46:cd=34;43:su=0;41:sg=0;46:tw=0;42:ow=0;43:"
+    #eval `/usr/local/bin/gdircolors -b`    # for LS_COLORS
+    ;;
 esac
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' # case-insensitive
@@ -73,25 +77,25 @@ bindkey "\e[B" history-beginning-search-forward-end             # cursor down
 
 # xterm ------------------------------------------------------------------------
 case $TERM in
-    xterm*)
-        precmd () {print -Pn "\e]0;%m\a"}
-        ;;
+  xterm*)
+    precmd () {print -Pn "\e]0;%m\a"}
+    ;;
 esac
 
 
 # stty(1) ----------------------------------------------------------------------
 case $OS in
-    Darwin)
-        stty status '^T'    # STATUS character
-        stty lnext  '^V'    # LNEXT character
-        stty discard '^O'   # DISCARD character
-        ;;
+  Darwin)
+    stty status '^T'    # STATUS character
+    stty lnext  '^V'    # LNEXT character
+    stty discard '^O'   # DISCARD character
+    ;;
 esac
 
 
 # source .environment (shell-independent) --------------------------------------
 if [[ -f ~/.environment ]]; then
-    . ~/.environment
+  . ~/.environment
 fi
 
 

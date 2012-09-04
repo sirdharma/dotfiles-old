@@ -30,9 +30,9 @@ esac
 
 case $OS in
     Darwin)
-        if [ -x /usr/libexec/path_helper ]; then
-            eval `/usr/libexec/path_helper -s`
-        fi
+        #if [ -x /usr/libexec/path_helper ]; then
+            #eval `/usr/libexec/path_helper -s`
+        #fi
         # MacPorts
         if [ -x /opt/local ]; then
             export PATH=/opt/local/bin:/opt/local/sbin:$PATH
@@ -42,7 +42,7 @@ case $OS in
             export PATH=/usr/local/netsoul:$PATH
         fi
         # We should put /usr/local first for Homebrew
-        export PATH=/usr/local/bin:/usr/local/sbin:$PATH
+        #export PATH=/usr/local/bin:/usr/local/sbin:$PATH
         #export PATH=/usr/local/Cellar/python/2.7.2/bin:$PATH
         #export PATH=/usr/local/Cellar/ruby/1.9.2-p290/bin:$PATH
         ;;
@@ -103,10 +103,10 @@ case $OS in
     Linux)
         alias ls='LC_COLLATE=C ls -F --color=auto'
         ;;
-    Darwin)
-        alias ls='gls -F --color=auto'
-        ;;
-    FreeBSD)
+    #Darwin)
+        #alias ls='gls -F --color=auto'
+        #;;
+    Darwin|FreeBSD)
         export CLICOLOR=
         ;;
     Minix)
@@ -141,9 +141,9 @@ esac
 # http://linux.die.net/man/5/termcap
 
 #export LESS_TERMCAP_mb=$'\e[01;36m'    # Start blinking
-export LESS_TERMCAP_md=$'\e[31m'        # Start bold mode
-export LESS_TERMCAP_so=$'\e[43;30m'     # Start standout mode
-export LESS_TERMCAP_us=$'\e[32m'        # Start underlining
-export LESS_TERMCAP_se=$'\e[0m'         # End standout mode
-export LESS_TERMCAP_ue=$'\e[0m'         # End underlining
-export LESS_TERMCAP_me=$'\e[0m'         # End all mode like so, us, mb, md and mr
+#export LESS_TERMCAP_md=$'\e[31m'        # Start bold mode
+#export LESS_TERMCAP_so=$'\e[43;30m'     # Start standout mode
+#export LESS_TERMCAP_us=$'\e[32m'        # Start underlining
+#export LESS_TERMCAP_se=$'\e[0m'         # End standout mode
+#export LESS_TERMCAP_ue=$'\e[0m'         # End underlining
+#export LESS_TERMCAP_me=$'\e[0m'         # End all mode like so, us, mb, md and mr
