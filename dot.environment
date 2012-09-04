@@ -9,17 +9,12 @@
 umask 022
 
 
-# uname & hostname -------------------------------------------------------------
-#OS=`uname -s`
-#HOSTNAME=`uname -n | sed 's/\..*$//'`
-
-
 # PATH -------------------------------------------------------------------------
 case $HOSTNAME in
     yellowstone)
         export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
         ;;
-    paulaner)
+    paulaner|saison)
         if [ -r /opt/ertos/bin/ertos_env.sh ]; then
             . /opt/ertos/bin/ertos_env.sh
         fi
@@ -30,39 +25,19 @@ esac
 
 case $OS in
     Darwin)
-        #if [ -x /usr/libexec/path_helper ]; then
-            #eval `/usr/libexec/path_helper -s`
-        #fi
-        # MacPorts
-        if [ -x /opt/local ]; then
-            export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-        fi
-        # netsoul
-        if [ -x /usr/local/netsoul ]; then
-            export PATH=/usr/local/netsoul:$PATH
-        fi
-        # We should put /usr/local first for Homebrew
-        #export PATH=/usr/local/bin:/usr/local/sbin:$PATH
-        #export PATH=/usr/local/Cellar/python/2.7.2/bin:$PATH
-        #export PATH=/usr/local/Cellar/ruby/1.9.2-p290/bin:$PATH
-        ;;
+       ;;
     Linux)
         # ipkg
         if [ -x /opt ]; then
             export PATH=/opt/bin:/opt/sbin:$PATH
         fi
         ;;
-    Minix)
-        # pkgin
-        export PATH=/usr/local/bin:$PATH
+   *)
         ;;
-    *)
-       ;;
 esac
 
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-      PATH="$HOME/bin:$PATH"
+if [ -x "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
 fi
 
 
@@ -77,12 +52,12 @@ export PAGER='less'
 # LANG -------------------------------------------------------------------------
 case $OS in
     Linux)
-#        export LANGUAGE=en_US:en
-#        export LANG=en_US.UTF-8
-#        export LC_ALL=en_US.UTF-8
-#        export GDM_LANG=en_US.UTF-8
+        #export LANGUAGE=en_US:en
+        #export LANG=en_US.UTF-8
+        #export LC_ALL=en_US.UTF-8
+        #export GDM_LANG=en_US.UTF-8
         ;;
-    Minix)
+    *)
         ;;
 esac
 
@@ -103,10 +78,7 @@ case $OS in
     Linux)
         alias ls='LC_COLLATE=C ls -F --color=auto'
         ;;
-    #Darwin)
-        #alias ls='gls -F --color=auto'
-        #;;
-    Darwin|FreeBSD)
+   Darwin|FreeBSD)
         export CLICOLOR=
         ;;
     Minix)
@@ -117,7 +89,7 @@ case $OS in
 esac
 
 case $HOSTNAME in
-    yellowstone|scope|zion|paulaner) # servers
+    yellowstone|scope|zion|paulaner|saison) # servers
         alias ll='ls -lhA'
         ;;
     *)
