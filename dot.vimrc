@@ -1,10 +1,23 @@
 "
 " .vimrc by François
-" Thanks to Opera, Bombela and Hotgloupi
+" Thanks to Opera and Bombela
 "
 
 " Variables
 let hostname = substitute(system('hostname'), '\n', '', '')
+
+" Pathogen
+execute pathogen#infect()
+
+" Filetype
+filetype plugin indent on   " Detection: on, plugin: on, indent: on
+
+" Syntax
+syntax enable   " Syntax highlighting
+
+" Color scheme
+set background=dark         " Dark background.
+colorscheme solarized
 
 " Global options
 set nocompatible                " Not Vi-compatible
@@ -22,7 +35,7 @@ set incsearch   " Do incremental searching
 set hlsearch    " Highlight search
 
 " Tabs
-"set tabstop=8      " Number of spaces of tab character
+set tabstop=4       " Number of spaces of tab character
 set softtabstop=4   " Number of spaces of soft tab
 set shiftwidth=4    " Number of spaces to (auto)indent
 set expandtab       " Expand tabs into spaces
@@ -46,7 +59,7 @@ set autoindent  " Auto indentation
 " Editor
 set number                          " Print the line number in front of each line.
 set nowrap                          " Lines will not wrap
-if hostname == "yellowstone"
+if hostname == "kahurangi"
     set list                        " Show tabs and trailing whitespace
     set listchars=tab:>-,trail:.    " Symbols for tabs and trailing whitespace
 else
@@ -62,26 +75,13 @@ set noswapfile      " No swap files
 set nobackup        " No backup files
 "set nowritebackup  " No backup while overwriting file
 
-" Color scheme
-set background=dark         " Dark background.
-"colorscheme ir_dark        " (http://blog.infinitered.com/entries/show/8)
-"colorscheme wombat         " http://www.vim.org/scripts/script.php?script_id=1778
-set t_Co=256                " 256 colors in terminal
-colorscheme wombat256mod    " http://www.vim.org/scripts/script.php?script_id=2465
-
-" Filetype
-filetype plugin indent on   " Detection: on, plugin: on, indent: on
-
-" Syntax
-syntax on   " Syntax highlighting
-
 " Tags in $HOME
 set tags+=tags;$HOME
 
 " Highlight long lines
 " http://vim.wikia.com/wiki/Highlight_long_lines
 "autocmd FileType c,cpp,objc,tex autocmd BufWinEnter <buffer> let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
-autocmd FileType c,cpp,objc,tex set colorcolumn=80
+autocmd FileType c,cpp,objc,tex set colorcolumn=81
 
 " Highlight unwanted spaces
 " http://vim.wikia.com/wiki/Highlight_unwanted_spaces
