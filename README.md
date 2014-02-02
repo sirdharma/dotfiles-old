@@ -1,11 +1,4 @@
 dotfiles
 ========
 
-.gitconfig
-.screenrc
-.ssh/config
-.vimrc
-.vim/
-.zshrc
-
-And more!
+Git, Screen, SSH, Vim, Zsh and more !
