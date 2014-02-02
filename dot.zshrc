@@ -3,58 +3,67 @@
 #
 
 
-# uname & hostname -------------------------------------------------------------
-OS=`uname -s`
-HOSTNAME=`uname -n | sed 's/\..*$//'`
+# Operating System & Hostname --------------------------------------------------
+
+OS=`uname -s`                           # get OS
+HOSTNAME=`uname -n | sed 's/\..*$//'`   # get HOSTNAME
 
 
-# prompt -----------------------------------------------------------------------
-autoload -Uz promptinit
-promptinit
-prompt walters
-#autoload colors;
-#colors
-#PROMPT="%{$fg_bold[green]%}%n%{$reset_color%}@%{$fg_bold[green]%}%m%{$reset_color%}:%{$fg_bold[blue]%}%~%{$reset_color%}%(!.#.$) "
+# Prompt Themes ----------------------------------------------------------------
+# http://zsh.sourceforge.net/Doc/Release/User-Contributions.html#Prompt-Themes -
+
+autoload -U promptinit  # autoload the function promptinit
+promptinit              # initialize the use of prompt themes
+prompt walters green    # select the prompt 'walters' with color 'green'
 
 
-# general options --------------------------------------------------------------
-setopt extendedglob # extended globing
-setopt nomatch      # print error message if no match
-setopt notify       # report the status of background jobs immediatly
-unsetopt autocd     # no auto 'cd'
-unsetopt beep       # no beep
+# General Options --------------------------------------------------------------
+
+#setopt extendedglob # extended globing
+#setopt nomatch      # print error message if no match
+#setopt notify       # report the status of background jobs immediatly
+#setopt autocd     # no auto 'cd'
+#unsetopt beep       # no beep
 
 
-# history ----------------------------------------------------------------------
+# History ----------------------------------------------------------------------
+
 setopt appendhistory        # append history
 setopt histignorealldups    # ignore all dups
-HISTFILE=~/.zhistory
-HISTSIZE=65536
-SAVEHIST=65536
+HISTFILE=~/.zhistory        # history file
+HISTSIZE=65536              # history size
+SAVEHIST=$HISTSIZE
 
 
-# completion -------------------------------------------------------------------
-autoload -Uz compinit
-compinit
+# Colors -----------------------------------------------------------------------
 
-zstyle ':completion:*' menu select
+# Customized LS_COLORS for Solarized Dark
+LS_COLORS="di=34;100:ln=35;100:so=32;100:pi=33;100:ex=31;100:bd=90;46:cd=90;43:su=90;41:sg=90;46:tw=90;42:ow=90;43:"
 
 case $OS in
     Linux)
-        # For LS_COLORS
-        eval `dircolors -b`
+        export LS_COLORS
         ;;
     Darwin)
-        # Equivalent to BSD's default LSCOLORS
-        LS_COLORS="di=34;40:ln=35;40:so=32;40:pi=33;40:ex=31;40:bd=34;46:cd=34;43:su=0;41:sg=0;46:tw=0;42:ow=0;43:"
+        # Matching BSD's LSCOLORS
+        export LSCOLORS="exfxcxdxbxAgAdAbAgAcAd"
         ;;
 esac
 
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'    # case-insensitive
+
+# Completion System ------------------------------------------------------------
+# http://zsh.sourceforge.net/Doc/Release/Completion-System.html ----------------
+
+autoload -U compinit    # autoload the function compinit
+compinit                # initialize the use of the completion system
+
+zstyle ':completion:*' menu select  # menu selection will be started unconditionally
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}   # use LS_COLORS for lists
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'    # case-insensitive completion
 
 
-# bindings ---------------------------------------------------------------------
+# Bindings ---------------------------------------------------------------------
+
 bindkey -e                          # emacs-style key bindings
 
 bindkey "\033[3~" delete-char       # forward delete
@@ -66,8 +75,9 @@ bindkey "\033[F"  end-of-line       # end
 WORDCHARS="${WORDCHARS:s#/#}"       # '/' marks separate words
 
 
-# history-search ---------------------------------------------------------------
-autoload -Uz history-search-end
+# History Search ---------------------------------------------------------------
+
+autoload -U history-search-end
 
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
@@ -76,6 +86,7 @@ bindkey "\033[B" history-beginning-search-forward-end           # cursor down
 
 
 # xterm ------------------------------------------------------------------------
+
 case $TERM in
     xterm*)
         precmd () {print -Pn "\e]0;%m\a"}
@@ -84,6 +95,7 @@ esac
 
 
 # stty(1) ----------------------------------------------------------------------
+
 case $OS in
     Darwin)
         stty status '^T'    # STATUS character
@@ -93,13 +105,14 @@ case $OS in
 esac
 
 
-# source .environment (shell-independent) --------------------------------------
+# Source .environment (shell-independent) --------------------------------------
+
 if [[ -f ~/.environment ]]; then
     . ~/.environment
 fi
 
 
-# unset ------------------------------------------------------------------------
-unset OS
-unset HOSTNAME
-unset LS_COLORS
+# Unset variables --------------------------------------------------------------
+
+unset OS        # clear OS
+unset HOSTNAME  # clear HOSTNAME
